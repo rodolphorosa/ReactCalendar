@@ -11,12 +11,10 @@ module.exports = {
     filename: "main.bundle.js"
   },
 
-  plugins: [new webpack.ProvidePlugin({$: 'jquery'})],
-
   module: {
     loaders: [
       { test: /\.jsx?$/, exclude: "/node_modules/", loader: "babel-loader" },
-      { test: /\.css$/, use: { loader: "style-loader!css-loader" } }
+      { test: /\.css$/, loader: "style-loader!css-loader" }
     ]
   },
 

@@ -16,8 +16,12 @@ class Home extends Component {
 
   render() {
     if (this.state.events) {
-      var eventList = this.state.events.map(function(event) {
-        return <li key={event._id}><Link to="/api/events/${event._id}">{event.title}</Link></li>
+      var eventList = this.state.events.map((event) => {
+        return(
+          <li key={ event._id }><Link to={`/event/${ event._id }`}>
+            { event.title }
+          </Link></li>
+        );
       });
 
       return(

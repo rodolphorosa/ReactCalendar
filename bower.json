@@ -1,0 +1,20 @@
+{
+  "name": "react_calendar",
+  "description": "",
+  "main": "src/server.js",
+  "authors": [
+    "Rodolpho Rosa"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/rodolphorosa/ReactCalendar",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass": "^3.3.7"
+  }
+}
