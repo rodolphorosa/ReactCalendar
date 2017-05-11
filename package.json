@@ -1,0 +1,51 @@
+{
+  "name": "react_calendar",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/server.js",
+  "scripts": {
+    "build": "webpack --config webpack.config.js && babel src -d dist",
+    "start": "nodemon dist/server.js",
+    "start-dev": "node_modules/.bin/babel-node src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rodolphorosa/ReactCalendar.git"
+  },
+  "author": "Rodolpho Rosa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rodolphorosa/ReactCalendar/issues"
+  },
+  "homepage": "https://github.com/rodolphorosa/ReactCalendar#readme",
+  "babel": {
+    "presets": [
+      "react",
+      "es2015"
+    ]
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-register": "^6.24.1",
+    "gulp": "^3.9.1",
+    "webpack": "^2.5.1"
+  },
+  "dependencies": {
+    "axios": "^0.16.1",
+    "body-parser": "^1.17.1",
+    "ejs": "^2.5.6",
+    "express": "^4.15.2",
+    "jquery": "^3.2.1",
+    "mongoose": "^4.9.8",
+    "multer": "^1.3.0",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-router-dom": "^4.1.1",
+    "style-loader": "^0.17.0"
+  }
+}

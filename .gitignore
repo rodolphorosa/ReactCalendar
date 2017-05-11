@@ -1,0 +1,12 @@
+#Logs
+logs
+*.log
+
+#Dependency directory
+node_modules
+
+#Babel config file
+.babelrc
+
+#Compiled files
+dist
