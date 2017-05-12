@@ -28,7 +28,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(router);
 
 app.get("*", (req, res) => {
-  console.log("adfadfasdfadfasdf");
   const context = {};
   const html = renderToString(
     <StaticRouter location = { req.url } context = { context }>

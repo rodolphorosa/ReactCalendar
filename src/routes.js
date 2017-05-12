@@ -18,4 +18,4 @@ router.get("/api/events/:id", (req, res) => {
   });
 });
 
-module.exports = router;
+export default router;

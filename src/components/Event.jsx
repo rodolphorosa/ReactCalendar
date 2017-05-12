@@ -4,7 +4,7 @@ import axios from "axios";
 class EventPage extends Component {
   constructor(props) {
     super(props);
-    this.state = { event: null };
+    this.state = { event: [] };
   }
 
   componentDidMount() {
@@ -16,20 +16,14 @@ class EventPage extends Component {
   }
 
   render() {
-    if (this.state.event) {
-      var event = this.state.event;
-      var start = new Date(event.start);
-      var end = new Date(event.end);
-      return(
-        <div>
-          <p><strong>Evento:</strong> { event.title }</p>
-          <p><strong>Descrição:</strong> { event.description }</p>
-          <p><strong>Local:</strong> { event.local }</p>
-        </div>
-      );
-    } else {
-      return <p>Evento não encontrado.</p>
-    }
+    var event = this.state.event;
+    return(
+      <div>
+        <p><strong>Evento:</strong> { event.title }</p>
+        <p><strong>Descrição:</strong> { event.description }</p>
+        <p><strong>Local:</strong> { event.local }</p>
+      </div>
+    );
   }
 }
 

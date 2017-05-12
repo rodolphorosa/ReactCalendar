@@ -29487,7 +29487,7 @@ var EventPage = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, (EventPage.__proto__ || Object.getPrototypeOf(EventPage)).call(this, props));
 
-    _this.state = { event: null };
+    _this.state = { event: [] };
     return _this;
   }
 
@@ -29502,54 +29502,44 @@ var EventPage = function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      if (this.state.event) {
-        var event = this.state.event;
-        var start = new Date(event.start);
-        var end = new Date(event.end);
-        return _react2.default.createElement(
-          "div",
-          null,
-          _react2.default.createElement(
-            "p",
-            null,
-            _react2.default.createElement(
-              "strong",
-              null,
-              "Evento:"
-            ),
-            " ",
-            event.title
-          ),
-          _react2.default.createElement(
-            "p",
-            null,
-            _react2.default.createElement(
-              "strong",
-              null,
-              "Descri\xE7\xE3o:"
-            ),
-            " ",
-            event.description
-          ),
-          _react2.default.createElement(
-            "p",
-            null,
-            _react2.default.createElement(
-              "strong",
-              null,
-              "Local:"
-            ),
-            " ",
-            event.local
-          )
-        );
-      } else {
-        return _react2.default.createElement(
+      var event = this.state.event;
+      return _react2.default.createElement(
+        "div",
+        null,
+        _react2.default.createElement(
           "p",
           null,
-          "Evento n\xE3o encontrado."
-        );
-      }
+          _react2.default.createElement(
+            "strong",
+            null,
+            "Evento:"
+          ),
+          " ",
+          event.title
+        ),
+        _react2.default.createElement(
+          "p",
+          null,
+          _react2.default.createElement(
+            "strong",
+            null,
+            "Descri\xE7\xE3o:"
+          ),
+          " ",
+          event.description
+        ),
+        _react2.default.createElement(
+          "p",
+          null,
+          _react2.default.createElement(
+            "strong",
+            null,
+            "Local:"
+          ),
+          " ",
+          event.local
+        )
+      );
     }
   }]);
 
@@ -29611,31 +29601,23 @@ var Home = function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      if (this.state.events) {
-        var eventList = this.state.events.map(function (event) {
-          return _react2.default.createElement(
-            "li",
-            { key: event._id },
-            _react2.default.createElement(
-              _reactRouterDom.Link,
-              { to: "/event/" + event._id },
-              event.title
-            )
-          );
-        });
+      var eventList = this.state.events.map(function (event) {
+        return _react2.default.createElement(
+          "li",
+          { key: event._id },
+          _react2.default.createElement(
+            _reactRouterDom.Link,
+            { to: "/event/" + event._id },
+            event.title
+          )
+        );
+      });
 
-        return _react2.default.createElement(
-          "ul",
-          null,
-          eventList
-        );
-      } else {
-        return _react2.default.createElement(
-          "p",
-          null,
-          "Ainda n\xE3o h\xE1 eventos cadastrados."
-        );
-      }
+      return _react2.default.createElement(
+        "ul",
+        null,
+        eventList
+      );
     }
   }]);
 
