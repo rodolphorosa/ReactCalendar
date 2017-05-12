@@ -1,10 +1,5 @@
 "use strict";
 
-import React from "react";
-import { renderToString } from "react-dom/server";
-import { StaticRouter } from "react-router";
-import App from "./components/App";
-
 import path from "path";
 import express from "express";
 import router from "./routes";
@@ -26,16 +21,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(router);
-
-app.get("*", (req, res) => {
-  const context = {};
-  const html = renderToString(
-    <StaticRouter location = { req.url } context = { context }>
-      <App />
-    </StaticRouter>
-  );
-  res.status(200).render("index", { html });
-});
 
 app.listen(port, () => {
   console.log("Server running at http://localhost:%d", port);

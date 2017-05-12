@@ -1,15 +1,48 @@
+import { Switch, Route, Link } from "react-router-dom";
 import React, { Component } from "react";
-import { Switch, Route } from "react-router-dom";
+
 import Home from "./Home";
-import NoMatch from "./NoMatch";
-import EventPage from "./Event";
+import EventPage from "./EventPage";
+import EventCreate from "./EventCreate";
+
+const Header = () => (
+  <header>
+    <Link to="/">
+      <h3>React Calendar</h3>
+    </Link>
+  </header>
+);
+
+const Footer = () => (
+  <footer>
+    <p>
+      React Calendar is an example of application
+      that uses <strong>ReactJS</strong> and <strong>NodeJS</strong>.
+    </p>
+  </footer>
+);
+
+const PageNotFound = () => (
+  <div>
+    <h1>404</h1>
+    <h3>Page not found!</h3>
+    <Link to="/">
+      <p>Voltar para página principal.</p>
+    </Link>
+  </div>
+);
 
 const App = () => (
-  <Switch>
-    <Route exact={true} path="/" component={Home}/>
-    <Route path="/event/:id" component={EventPage} />
-    <Route component={NoMatch}/>
-  </Switch>
+  <div>
+    <Header />
+    <Switch>
+      <Route exact path="/" component={ Home }/>
+      <Route exact path="/event/:id" component={ EventPage } />
+      <Route exact path="/create" component={ EventCreate } />
+      <Route component={ PageNotFound } />
+    </Switch>
+    <Footer />
+  </div>
 );
 
 export default App;
