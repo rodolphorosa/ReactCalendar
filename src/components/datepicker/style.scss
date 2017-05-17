@@ -1,0 +1,177 @@
+/* colors */
+$sunday-color: red;
+$today-text-color: #6495ed;
+$pre-selected-text-color: #ffffff;
+$pre-selected-background-color: #6495ed;
+$outta-month-text-color: rgba(0, 0, 0, .5);
+$on-hover-text-color: #ffffff;
+$on-hover-background-color: #6495ed;
+
+/* dimensions */
+$day-div-width: 32px;
+$day-div-height: 32px;
+$month-div-width: $day-div-width * 7 + 2px;
+// $datetime-picker-div-size: $month-div-width;
+
+@mixin input-font-style {
+  font-family: Consolas, sans-serif;
+  font-size: 12px;
+}
+
+@mixin today-div-color-style {
+  color: $today-text-color;
+}
+
+@mixin datetime-picker-text-style {
+  font-family: Helvetica, sans-serif;
+  font-size: 12px;
+}
+
+@mixin calendar-button-font-style {
+  font-family: Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+@mixin day-div-style {
+  @include datetime-picker-text-style;
+  width: $day-div-width;
+  height: $day-div-height;
+  line-height: $day-div-height;
+  text-align: center;
+  display: inline-block;
+}
+
+.hidden {
+  display: none;
+}
+
+.button:hover{
+  cursor: pointer;
+}
+
+.day-div {
+  @include day-div-style;
+  border-radius: 50%;
+}
+
+.day-div:hover {
+  background-color: $on-hover-background-color;
+  color: $on-hover-text-color;
+  cursor: pointer;
+}
+
+.today-div {
+  @extend .day-div;
+  @include today-div-color-style;
+  border: solid $today-text-color;
+  border-width: 1px;
+}
+
+.out-of-month-div {
+  @extend .day-div;
+  color: $outta-month-text-color;
+  // visibility: hidden;
+}
+
+.sunday {
+  color: $sunday-color;
+}
+
+.pre-selected-div {
+  @extend .day-div;
+  background-color: $pre-selected-background-color;
+  color: #ffffff;
+}
+
+.week-name-div {
+  @include day-div-style;
+}
+
+.week-name-div:hover {
+  cursor: default;
+}
+
+.month {
+  display: inline-block;
+  width: $month-div-width;
+}
+
+.month-header {
+  @include datetime-picker-text-style;
+  width: 60%;
+  display: inline-block;
+}
+
+.calendar-button {
+  @extend .button;
+  @include calendar-button-font-style;
+  width: 10%;
+  display: inline-block;
+}
+
+.calendar-header {
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.input {
+  @include input-font-style;
+}
+
+.input-time {
+  @include datetime-picker-text-style;
+  border: none;
+  text-align: center;
+}
+
+.selector, .separator {
+  margin: 0 auto;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.separator {
+  font-weight: bold;
+}
+
+.timer-wrapper {
+  display: inline-block;
+}
+
+.up-down-button {
+  @extend .button;
+  @include calendar-button-font-style;
+  text-align: center;
+}
+
+.calendar-wrapper {
+  margin-bottom: 2px;
+}
+
+.button-wrapper {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin: 5px;
+}
+
+.button-wrapper>a {
+  @include datetime-picker-text-style;
+  font-weight: bold;
+  color: #483d8b;
+  padding: 2px;
+  margin: 0 2px 0 2px;
+}
+
+.button-wrapper>a:hover {
+  cursor: pointer;
+}
+
+.datetime-wrapper {
+  padding: 2px 5px 2px 5px;
+  position: absolute;
+  border: solid black;
+  border-width: 1px;
+  background-color: #ffffff;
+}

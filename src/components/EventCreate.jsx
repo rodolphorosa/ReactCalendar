@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import DatePicker from "./datepicker/DatePicker";
 import axios from "axios";
 
 class EventCreate extends Component {
@@ -9,8 +10,8 @@ class EventCreate extends Component {
       title: "",
       description: "",
       local: "",
-      start: "",
-      end: ""
+      start: [],
+      end: []
     }
 
     this.onChange = this.onChange.bind(this);
@@ -23,14 +24,22 @@ class EventCreate extends Component {
     this.setState(state);
   }
 
+  onSelectStart(date, event) {
+    this.setState({ start: date })
+  }
+
+  onSelectEnd(date, event) {
+    this.setState({ end: date })
+  }
+
   onSubmit(event) {
     event.preventDefault();
     axios.post("/api/event", {
       title: this.state.title,
       local: this.state.local,
       description: this.state.description,
-      start: new Date("2017/05/11T15:47"),
-      end: new Date("2017/05/11T16:30")
+      start: this.state.start,
+      end: this.state.end
     })
     .then(function(response) {
       console.log("Event succesfully saved!");
@@ -38,10 +47,6 @@ class EventCreate extends Component {
     .catch(function(error){
       console.log("An error occured!");
     });
-  }
-
-  foo(event) {
-    console.log(event.target.value);
   }
 
   render() {
@@ -62,6 +67,7 @@ class EventCreate extends Component {
           <textarea name="description" required
             value={ this.state.description } onChange={ this.onChange }/>
         </div>
+        <DatePicker onSelect={ (date) => this.onSelectStart(date) }/>
         <button type="submit">Click</button>
       </form>
     );

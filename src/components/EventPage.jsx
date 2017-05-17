@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import moment from "moment";
 import axios from "axios";
 
 class EventPage extends Component {
@@ -11,7 +12,8 @@ class EventPage extends Component {
     var url = "/api/events/" + this.props.match.params.id;
     axios.get(url)
     .then(function(response) {
-      this.setState({ event: response.data.event });
+      this.setState({ evento: response.data.event });
+      console.log(response.data.event);
     }.bind(this));
   }
 
