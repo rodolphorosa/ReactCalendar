@@ -1,48 +1,13 @@
 @import "./bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
-
-$sunday-color: red;
-$today-text-color: #6495ed;
-$pre-selected-text-color: #ffffff;
-$pre-selected-background-color: #6495ed;
-$outta-month-text-color: rgba(0, 0, 0, .5);
-$on-hover-text-color: #ffffff;
-$on-hover-background-color: #6495ed;
-
-$day-div-width: 32px;
-$day-div-height: 32px;
-$month-div-width: $day-div-width * 7 + 2px;
-
-@mixin input-font-style {
-  font-family: Consolas, sans-serif;
-  font-size: 12px;
-}
-
-@mixin today-div-color-style {
-  color: $today-text-color;
-}
-
-@mixin datetime-picker-text-style {
-  font-family: Helvetica, sans-serif;
-  font-size: 12px;
-}
-
-@mixin calendar-button-font-style {
-  font-family: Helvetica, sans-serif;
-  font-size: 18px;
-  font-weight: bold;
-}
-
-@mixin day-div-style {
-  @include datetime-picker-text-style;
-  width: $day-div-width;
-  height: $day-div-height;
-  line-height: $day-div-height;
-  text-align: center;
-  display: inline-block;
-}
+@import "mixins";
+@import "variables";
 
 .hidden {
   display: none;
+}
+
+.absolute {
+  position: absolute;
 }
 
 .button:hover{
@@ -70,7 +35,7 @@ $month-div-width: $day-div-width * 7 + 2px;
 .out-of-month-div {
   @extend .day-div;
   color: $outta-month-text-color;
-  visibility: hidden;
+  // visibility: hidden;
 }
 
 .sunday {
@@ -116,14 +81,15 @@ $month-div-width: $day-div-width * 7 + 2px;
 }
 
 .toggleButton {
+  @extend .button;
   width: 100%;
   text-align: center;
+  padding: 4px;
 }
 
 .toggleButton:hover {
   background-color: $on-hover-background-color;
   color: $on-hover-text-color;
-  cursor: pointer;
 }
 
 .calendar-header {
@@ -141,7 +107,6 @@ $month-div-width: $day-div-width * 7 + 2px;
 
 .input-time {
   @include datetime-picker-text-style;
-  // border: none;
   text-align: center;
 }
 
@@ -160,19 +125,17 @@ $month-div-width: $day-div-width * 7 + 2px;
 }
 
 .time-wrapper {
-  position: absolute;
   border: solid black;
   border-width: 1px;
   background-color: #ffffff;
 }
 
 .calendar-container {
-  margin-bottom: 2px;
+  padding: 5px;
 }
 
 .calendar-wrapper {
-  padding: 2px 5px 2px 5px;
-  position: absolute;
+  display: inline-block;
   border: solid black;
   border-width: 1px;
   background-color: #ffffff;
@@ -181,4 +144,8 @@ $month-div-width: $day-div-width * 7 + 2px;
 .input-container {
   margin: 2px;
   display: inline-block;
+}
+
+.datepicker {
+  display: table;
 }

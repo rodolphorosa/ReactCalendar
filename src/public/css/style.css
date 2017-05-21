@@ -5817,7 +5817,10 @@ button.close {
 .hidden {
   display: none; }
 
-.button:hover, .right-left-button:hover, .up-down-button:hover {
+.absolute {
+  position: absolute; }
+
+.button:hover, .right-left-button:hover, .up-down-button:hover, .toggleButton:hover {
   cursor: pointer; }
 
 .day-div, .today-div, .out-of-month-div, .pre-selected-div {
@@ -5841,8 +5844,7 @@ button.close {
   border-width: 1px; }
 
 .out-of-month-div {
-  color: rgba(0, 0, 0, 0.5);
-  visibility: hidden; }
+  color: rgba(0, 0, 0, 0.5); }
 
 .sunday {
   color: red; }
@@ -5888,12 +5890,12 @@ button.close {
 
 .toggleButton {
   width: 100%;
-  text-align: center; }
+  text-align: center;
+  padding: 4px; }
 
 .toggleButton:hover {
   background-color: #6495ed;
-  color: #ffffff;
-  cursor: pointer; }
+  color: #ffffff; }
 
 .calendar-header {
   text-align: center;
@@ -5924,17 +5926,15 @@ button.close {
   padding: 12px; }
 
 .time-wrapper {
-  position: absolute;
   border: solid black;
   border-width: 1px;
   background-color: #ffffff; }
 
 .calendar-container {
-  margin-bottom: 2px; }
+  padding: 5px; }
 
 .calendar-wrapper {
-  padding: 2px 5px 2px 5px;
-  position: absolute;
+  display: inline-block;
   border: solid black;
   border-width: 1px;
   background-color: #ffffff; }
@@ -5942,3 +5942,6 @@ button.close {
 .input-container {
   margin: 2px;
   display: inline-block; }
+
+.datepicker {
+  display: table; }

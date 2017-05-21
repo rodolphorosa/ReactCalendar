@@ -10,10 +10,10 @@ class DatePicker extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
     label: PropTypes.string,
-    onSelect: PropTypes.func,
-    onCancel: PropTypes.func,
-    onClose: PropTypes.func,
-    preSelected: PropTypes.object
+    format: PropTypes.string,
+    preSelected: PropTypes.object,
+    displayTimer: PropTypes.bool,
+    onSelect: PropTypes.func.isRequired
   }
 
   constructor(props) {
@@ -29,15 +29,28 @@ class DatePicker extends Component {
     }
   }
 
+  componentWillMount() {
+    document.addEventListener("click", this.onClickOutside, false)
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("click", this.onClickOutside, false)
+  }
+
+  onClickOutside = (event) => {
+    if(!ReactDOM.findDOMNode(this).contains(event.target)) {
+      this.setCalendarOpen(false)
+      this.setTimerOpen(false)
+    }
+  }
+
   componentWillReceiveProps(nextProps) {
-    if(nextProps.preSelected !== this.props.preSelected) {
+    if (nextProps.preSelected !== this.props.preSelected) {
       this.setState({ selected: nextProps.preSelected })
     }
   }
 
   onSelect = (date, event) => {
-    // this.setState({ selected: date })
-    // if(this.props.onSelect) this.props.onSelect(date)
     let selected = this.state.selected.clone().set({
       "year": date.year(),
       "month": date.month(),
@@ -47,11 +60,20 @@ class DatePicker extends Component {
     this.props.onSelect(selected)
   }
 
+  onIncreaseHour = (event) => {
+    let increased = this.state.selected.hours() < 23 ?
+      this.state.selected.clone().add(1, "hours") :
+      this.state.selected.clone().hours(0);
+    this.setState({ selected: increased });
+    this.props.onSelect(increased);
+  }
+
   onDecreaseHour = (event) => {
     let decreased = this.state.selected.hours() > 0 ?
       this.state.selected.clone().subtract(1, "hours") :
       this.state.selected.clone().hours(23);
     this.setState({ selected: decreased });
+    this.props.onSelect(decreased);
   }
 
   onIncreaseMinute = (event) => {
@@ -59,6 +81,7 @@ class DatePicker extends Component {
       this.state.selected.clone().add(1, "minutes") :
       this.state.selected.clone().minutes(0);
     this.setState({ selected: increased });
+    this.props.onSelect(increased);
   }
 
   onDecreaseMinute = (event) => {
@@ -66,6 +89,7 @@ class DatePicker extends Component {
       this.state.selected.clone().subtract(1, "minutes") :
       this.state.selected.clone().minutes(59);
     this.setState({ selected: decreased });
+    this.props.onSelect(decreased);
   }
 
   onChangeHour = (input, event) => {
@@ -73,6 +97,7 @@ class DatePicker extends Component {
       this.state.selected.clone().hours(input.value) :
       this.state.selected.clone().hours(23);
     this.setState({ selected: date });
+    this.props.onSelect(date);
   }
 
   onChangeMinutes = (input, event) => {
@@ -80,13 +105,16 @@ class DatePicker extends Component {
       this.state.selected.clone().minutes(input.value) :
       this.state.selected.clone().minutes(59);
     this.setState({ selected: date });
+    this.props.onSelect(date);
   }
 
-  onClose = (event) => this.setCalendarOpen(false)
-
   onInputClick = (event) => {
-    this.setCalendarOpen(!this.state.calendarOpen)
-    this.setTimerOpen(false)
+    if (this.state.calendarOpen || this.state.timerOpen) {
+      this.setCalendarOpen(false);
+      this.setTimerOpen(false);
+    } else {
+      this.setCalendarOpen(true);
+    }
   }
 
   setCalendarOpen = (open) => this.setState({ calendarOpen: open })
@@ -97,14 +125,15 @@ class DatePicker extends Component {
 
   toggleTimer = (event) => this.setTimerOpen(!this.state.timerOpen)
 
-  toggle = (event) => {
+  onToggle = (event) => {
     this.toggleCalendar(event)
     this.toggleTimer(event)
   }
 
   render() {
+    const format = this.props.format ? this.props.format : "DD/MM/YYYY HH:mm";
     return(
-      <div className="form-group">
+      <div className="form-group datepicker">
         <div className="input-container">
           <label htmlFor={ this.props.name }>{ this.props.label }</label>
           <input
@@ -112,18 +141,17 @@ class DatePicker extends Component {
             name={ this.props.name }
             type="text"
             ref={ (input) => { this.input = input; } }
-            value={ this.state.selected.format("DD/MM/YYYY HH:mm") }
+            value={ this.state.selected.format(format) }
             readOnly
             onClick={ this.onInputClick.bind(this) } />
-          <div className={ this.state.calendarOpen ? "" : "hidden" }>
+          <div className={ this.state.calendarOpen ? 'absolute':'hidden' }>
             <Calendar
               preSelected={ this.state.selected }
               onSelect={ this.onSelect }
-              onCancel={ this.onCancel }
-              onClose={ this.onClose }
-              toggle={ this.toggle } />
+              onToggle={ this.onToggle }
+              displayTimer={ this.props.displayTimer } />
           </div>
-          <div className={ this.state.timerOpen ? "" : "hidden" }>
+          <div className={ this.state.timerOpen ? 'absolute':'hidden'}>
             <Time
               date={ this.state.selected }
               onIncreaseMinute={ this.onIncreaseMinute }
@@ -132,7 +160,7 @@ class DatePicker extends Component {
               onDecreaseHour={ this.onDecreaseHour }
               onChangeHour={ this.onChangeHour }
               onChangeMinutes={ this.onChangeMinutes }
-              toggle={ this.toggle } />
+              onToggle={ this.onToggle } />
           </div>
         </div>
       </div>

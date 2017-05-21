@@ -2,14 +2,14 @@ import { Switch, Route, Link } from "react-router-dom";
 import React, { Component } from "react";
 
 import Home from "./Home";
-import EventPage from "./EventPage";
-import EventCreate from "./EventCreate";
-import EventEdit from "./EventEdit";
+import Event from "./Event";
+import AddEvent from "./AddEvent";
+import EditEvent from "./EditEvent";
 
 const Header = () => (
   <header>
     <Link to="/">
-      <h3>React Calendar</h3>
+      <h1>React Calendar</h1>
     </Link>
   </header>
 );
@@ -34,13 +34,13 @@ const PageNotFound = () => (
 );
 
 const App = () => (
-  <div>
+  <div className="container">
     <Header />
     <Switch>
       <Route exact path="/" component={ Home }/>
-      <Route exact path="/event" component={ EventCreate } />
-      <Route exact path="/events/:id" component={ EventPage } />
-      <Route exact path="/events/edit/:id" component={ EventEdit } />
+      <Route exact path="/add" component={ AddEvent } />
+      <Route exact path="/events/:id" component={ Event } />
+      <Route exact path="/events/edit/:id" component={ EditEvent } />
       <Route component={ PageNotFound } />
     </Switch>
     <Footer />

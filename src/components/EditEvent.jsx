@@ -3,7 +3,7 @@ import EventForm from "./EventForm";
 import moment from "moment";
 import axios from "axios";
 
-class EventEdit extends Component {
+class EditEvent extends Component {
   constructor(props) {
     super(props);
     this.state = this.getInitialState();
@@ -35,13 +35,13 @@ class EventEdit extends Component {
     });
   }
 
-  onChange = (event) => this.setState({ [event.target.name]: event.target.value })
+  handleInputChange = (event) => this.setState({ [event.target.name]: event.target.value })
 
-  onSelectStart = (date, event) => this.setState({ start: date })
+  handleSelectStart = (date) => this.setState({ start: date })
 
-  onSelectEnd = (date, event) => this.setState({ end: date })
+  handleSelectEnd = (date) => this.setState({ end: date })
 
-  onSubmit = (event, history) => {
+  handleSubmit = (event) => {
     var url = "/api/events/" + this.props.match.params.id;
     axios({
       url: url,
@@ -69,12 +69,12 @@ class EventEdit extends Component {
         description={ this.state.description }
         start={ this.state.start }
         end={ this.state.end }
-        onChange={ this.onChange }
-        onSubmit={ this.onSubmit }
-        onSelectStart={ this.onSelectStart }
-        onSelectEnd={ this.onSelectEnd } />
+        handleSubmit={ this.handleSubmit }
+        handleInputChange={ this.handleInputChange }
+        handleSelectStart={ this.handleSelectStart }
+        handleSelectEnd={ this.handleSelectEnd } />
     );
   }
 }
 
-export default EventEdit;
+export default EditEvent;

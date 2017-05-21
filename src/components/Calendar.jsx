@@ -9,7 +9,7 @@ import classnames from "classnames";
 
 class Calendar extends Component {
   static propTypes = {
-    preSelected: PropTypes.object.isRequired
+    preSelected: PropTypes.object
   }
 
   constructor(props) {
@@ -19,8 +19,7 @@ class Calendar extends Component {
 
   getInitialState = () => {
     return {
-      date: this.props.preSelected ? this.props.preSelected : moment().locale("pt-BR"),
-      hidden: false
+      date: this.props.preSelected ? this.props.preSelected : moment().locale("pt-BR")
     }
   }
 
@@ -28,11 +27,6 @@ class Calendar extends Component {
     if(nextProps.preSelected !== this.props.preSelected) {
       this.setState({ date: nextProps.preSelected })
     }
-  }
-
-  onCancel = (event) => {
-    this.props.onCancel(event)
-    this.setState(this.getInitialState())
   }
 
   onSelect = (day, event) => {
@@ -61,7 +55,7 @@ class Calendar extends Component {
   }
 
   toggle = (event) => {
-    this.props.toggle(event)
+    this.props.onToggle(event)
   }
 
   renderCalendar() {
@@ -88,15 +82,19 @@ class Calendar extends Component {
           </div>
   }
 
+  renderTimer() {
+    return <div
+      className={ this.props.displayTimer ? "toggleButton":"hidden" }
+      onClick={ this.toggle }>
+      { this.state.date.format("HH:mm") }
+    </div>
+  }
+
   render() {
     return(
       <div className="calendar-wrapper">
         { this.renderCalendar() }
-        <div
-          className="toggleButton"
-          onClick={ this.toggle }>
-          { this.state.date.format("HH:mm") }
-        </div>
+        { this.renderTimer() }
       </div>
     );
   }

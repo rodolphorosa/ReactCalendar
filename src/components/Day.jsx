@@ -31,11 +31,11 @@ class Day extends Component {
 
   render() {
     var classes = classnames({
+      "sunday": this.isSunday(),
       "day-div": !this.isToday(),
       "today-div": this.isToday(),
       "out-of-month-div": this.isOutOfMonth(),
-      "pre-selected-div": this.isPreSelected(),
-      "sunday": this.isSunday()
+      "pre-selected-div": this.isPreSelected()      
     });
 
     return(

@@ -51,7 +51,7 @@ class Time extends Component {
   }
 
   toggle = (event) => {
-    this.props.toggle(event)
+    this.props.onToggle(event)
   }
 
   render() {

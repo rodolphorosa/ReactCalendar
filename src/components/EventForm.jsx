@@ -11,19 +11,18 @@ class EventForm extends Component {
     local: PropTypes.string,
     start: PropTypes.object,
     end: PropTypes.object,
-    onChange: PropTypes.func.isRequired,
-    onSubmit: PropTypes.func.isRequired,
-    onSelectStart: PropTypes.func.isRequired,
-    onSelectEnd: PropTypes.func.isRequired
+    handleSubmit: PropTypes.func.isRequired,
+    handleSelectStart: PropTypes.func.isRequired,
+    handleSelectEnd: PropTypes.func.isRequired
   }
 
-  onSelectStart = (date, event) => this.props.onSelectStart(date, event)
+  onSelectStart = (date, event) => this.props.handleSelectStart(date, event)
 
-  onSelectEnd = (date, event) => this.props.onSelectEnd(date, event)
+  onSelectEnd = (date, event) => this.props.handleSelectEnd(date, event)
 
-  onChange = (event) => this.props.onChange(event)
+  onInputChange = (event) => this.props.handleInputChange(event)
 
-  onSubmit = (event) => this.props.onSubmit(event)
+  onSubmit = (event) => this.props.handleSubmit(event)
 
   render() {
     return(
@@ -33,26 +32,28 @@ class EventForm extends Component {
             name="title"
             placeholder="Evento sem título"
             value={ this.props.title }
-            onChange={ this.onChange } />
+            onChange={ this.onInputChange } />
           <TextInput
             name="local"
             label="Onde: "
             placeholder="Digite um local"
             value={ this.props.local }
-            onChange={ this.onChange } />
+            onChange={ this.onInputChange } />
           <TextArea
             name="description"
             label="Descrição: "
             value={ this.props.description }
-            onChange={ this.onChange } />
+            onChange={ this.onInputChange } />
           <DatePicker
             name="start"
             label="Início: "
+            displayTimer={ true }
             preSelected={ this.props.start }
             onSelect={ this.onSelectStart } />
           <DatePicker
             name="end"
             label="Término: "
+            displayTimer={ true }
             preSelected={ this.props.end }
             onSelect={ this.onSelectEnd } />
           <input

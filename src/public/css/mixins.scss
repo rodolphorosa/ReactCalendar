@@ -1,0 +1,30 @@
+@import "variables";
+
+@mixin input-font-style {
+  font-family: Consolas, sans-serif;
+  font-size: 12px;
+}
+
+@mixin today-div-color-style {
+  color: $today-text-color;
+}
+
+@mixin datetime-picker-text-style {
+  font-family: Helvetica, sans-serif;
+  font-size: 12px;
+}
+
+@mixin calendar-button-font-style {
+  font-family: Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+@mixin day-div-style {
+  @include datetime-picker-text-style;
+  width: $day-div-width;
+  height: $day-div-height;
+  line-height: $day-div-height;
+  text-align: center;
+  display: inline-block;
+}
