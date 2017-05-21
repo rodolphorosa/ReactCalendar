@@ -1,0 +1,105 @@
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
+import MonthHeader from "./MonthHeader";
+import Month from "./Month";
+import Time from "./Time";
+import moment from "moment";
+import PropTypes from "prop-types";
+import classnames from "classnames";
+
+class Calendar extends Component {
+  static propTypes = {
+    preSelected: PropTypes.object.isRequired
+  }
+
+  constructor(props) {
+    super(props);
+    this.state = this.getInitialState();
+  }
+
+  getInitialState = () => {
+    return {
+      date: this.props.preSelected ? this.props.preSelected : moment().locale("pt-BR"),
+      hidden: false
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.preSelected !== this.props.preSelected) {
+      this.setState({ date: nextProps.preSelected })
+    }
+  }
+
+  onCancel = (event) => {
+    this.props.onCancel(event)
+    this.setState(this.getInitialState())
+  }
+
+  onSelect = (day, event) => {
+    this.setState({ date: day })
+    this.props.onSelect(day, event)
+  }
+
+  onIncreaseMonth = () => {
+    let nextMonth = this.state.date.clone().add(1, "month");
+    this.setState({ date: nextMonth });
+  }
+
+  onDecreaseMonth = () => {
+    let previousMonth = this.state.date.clone().subtract(1, "month");
+    this.setState({ date: previousMonth });
+  }
+
+  onIncreaseYear = () => {
+    let nextYear = this.state.date.clone().add(1, "year");
+    this.setState({ date: nextYear });
+  }
+
+  onDecreaseYear = () => {
+    let previousYear = this.state.date.clone().subtract(1, "year");
+    this.setState({ date: previousYear });
+  }
+
+  toggle = (event) => {
+    this.props.toggle(event)
+  }
+
+  renderCalendar() {
+    return <div className="calendar-container">
+            <div className="calendar-header">
+              <div
+                className="right-left-button"
+                onClick={ this.onDecreaseYear }>&laquo;</div>
+              <div
+                className="right-left-button"
+                onClick={ this.onDecreaseMonth }>&#8249;</div>
+              <MonthHeader date={ this.state.date } />
+              <div
+                className="right-left-button"
+                onClick={ this.onIncreaseMonth }>&#8250;</div>
+              <div
+                className="right-left-button"
+                onClick={ this.onIncreaseYear }>&raquo;</div>
+            </div>
+            <Month
+              date={ this.state.date }
+              preSelected={ this.props.preSelected }
+              onSelect={ this.onSelect } />
+          </div>
+  }
+
+  render() {
+    return(
+      <div className="calendar-wrapper">
+        { this.renderCalendar() }
+        <div
+          className="toggleButton"
+          onClick={ this.toggle }>
+          { this.state.date.format("HH:mm") }
+        </div>
+      </div>
+    );
+  }
+}
+
+export default Calendar;

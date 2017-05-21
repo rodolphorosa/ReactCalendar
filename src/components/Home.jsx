@@ -15,17 +15,24 @@ class Home extends Component {
   }
 
   render() {
-    var eventList = this.state.events.map((event) => {
-      return(
-        <li key={ event._id }><Link to={`/event/${ event._id }`}>
-          { event.title }
-        </Link></li>
-      );
-    });
+    if(this.state.events.length > 0) {
+      var eventList = this.state.events.map((event) => {
+        return(
+          <li key={ event._id }><Link to={`/events/${ event._id }`}>
+            { event.title }
+          </Link></li>
+        );
+      });
 
-    return(
-      <ul>{ eventList }</ul>
-    );
+      return(
+        <ul>{ eventList }</ul>
+      );
+
+    } else {
+      return (
+        <p>Não há eventos cadastrados.</p>
+      );
+    }
   }
 }
 

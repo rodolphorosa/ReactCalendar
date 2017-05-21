@@ -1,4 +1,5 @@
-/* colors */
+@import "./bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
+
 $sunday-color: red;
 $today-text-color: #6495ed;
 $pre-selected-text-color: #ffffff;
@@ -7,11 +8,9 @@ $outta-month-text-color: rgba(0, 0, 0, .5);
 $on-hover-text-color: #ffffff;
 $on-hover-background-color: #6495ed;
 
-/* dimensions */
 $day-div-width: 32px;
 $day-div-height: 32px;
 $month-div-width: $day-div-width * 7 + 2px;
-// $datetime-picker-div-size: $month-div-width;
 
 @mixin input-font-style {
   font-family: Consolas, sans-serif;
@@ -71,7 +70,7 @@ $month-div-width: $day-div-width * 7 + 2px;
 .out-of-month-div {
   @extend .day-div;
   color: $outta-month-text-color;
-  // visibility: hidden;
+  visibility: hidden;
 }
 
 .sunday {
@@ -103,11 +102,28 @@ $month-div-width: $day-div-width * 7 + 2px;
   display: inline-block;
 }
 
-.calendar-button {
+.right-left-button {
   @extend .button;
   @include calendar-button-font-style;
   width: 10%;
   display: inline-block;
+}
+
+.up-down-button {
+  @extend .button;
+  @include calendar-button-font-style;
+  text-align: center;
+}
+
+.toggleButton {
+  width: 100%;
+  text-align: center;
+}
+
+.toggleButton:hover {
+  background-color: $on-hover-background-color;
+  color: $on-hover-text-color;
+  cursor: pointer;
 }
 
 .calendar-header {
@@ -115,13 +131,17 @@ $month-div-width: $day-div-width * 7 + 2px;
   margin-bottom: 5px;
 }
 
-.input {
+.costum-input-text {
+  @include input-font-style;
+}
+
+.costum-textarea {
   @include input-font-style;
 }
 
 .input-time {
   @include datetime-picker-text-style;
-  border: none;
+  // border: none;
   text-align: center;
 }
 
@@ -135,43 +155,30 @@ $month-div-width: $day-div-width * 7 + 2px;
   font-weight: bold;
 }
 
-.timer-wrapper {
-  display: inline-block;
+.time-container {
+  padding: 12px;
 }
 
-.up-down-button {
-  @extend .button;
-  @include calendar-button-font-style;
-  text-align: center;
+.time-wrapper {
+  position: absolute;
+  border: solid black;
+  border-width: 1px;
+  background-color: #ffffff;
 }
 
-.calendar-wrapper {
+.calendar-container {
   margin-bottom: 2px;
 }
 
-.button-wrapper {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  margin: 5px;
-}
-
-.button-wrapper>a {
-  @include datetime-picker-text-style;
-  font-weight: bold;
-  color: #483d8b;
-  padding: 2px;
-  margin: 0 2px 0 2px;
-}
-
-.button-wrapper>a:hover {
-  cursor: pointer;
-}
-
-.datetime-wrapper {
+.calendar-wrapper {
   padding: 2px 5px 2px 5px;
   position: absolute;
   border: solid black;
   border-width: 1px;
   background-color: #ffffff;
+}
+
+.input-container {
+  margin: 2px;
+  display: inline-block;
 }

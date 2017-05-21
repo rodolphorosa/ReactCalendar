@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import Home from "./Home";
 import EventPage from "./EventPage";
 import EventCreate from "./EventCreate";
+import EventEdit from "./EventEdit";
 
 const Header = () => (
   <header>
@@ -37,8 +38,9 @@ const App = () => (
     <Header />
     <Switch>
       <Route exact path="/" component={ Home }/>
-      <Route exact path="/event/:id" component={ EventPage } />
-      <Route exact path="/create" component={ EventCreate } />
+      <Route exact path="/event" component={ EventCreate } />
+      <Route exact path="/events/:id" component={ EventPage } />
+      <Route exact path="/events/edit/:id" component={ EventEdit } />
       <Route component={ PageNotFound } />
     </Switch>
     <Footer />

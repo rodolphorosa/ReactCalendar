@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import classnames from "classnames";
-import "./style.css";
 
 class WeekHeader extends Component {
   render() {

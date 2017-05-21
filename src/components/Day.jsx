@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 import moment from "moment";
-import "./style.css";
 
 class Day extends Component {
   static propTypes = {

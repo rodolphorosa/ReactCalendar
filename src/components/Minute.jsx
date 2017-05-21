@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-class Hour extends Component {
+class Minute extends Component {
   static propTypes = {
     date: PropTypes.object.isRequired
   }
@@ -27,11 +27,11 @@ class Hour extends Component {
           &#9652;
         </div>
         <input
-          className="input-time"
+          className="form-control input-time"
           ref={ (input) => { this.input = input } }
-          value={ this.props.date.format("HH") }
+          value={ this.props.date.format("mm") }
           size={ 5 }
-          onChange={ this.onChange } />
+          onChange={ this.onChange }/>
         <div
           className="up-down-button"
           onClick={ this.decrease } >
@@ -42,4 +42,4 @@ class Hour extends Component {
   }
 }
 
-export default Hour;
+export default Minute;

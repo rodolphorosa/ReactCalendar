@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import WeekHeader from "./WeekHeader";
 import Week from "./Week";
-import "./style.css"
 
 class Month extends Component {
   static propTypes = {
