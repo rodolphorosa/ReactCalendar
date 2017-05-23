@@ -10,8 +10,53 @@
   position: absolute;
 }
 
+.invalid-date, .invalid-input {
+  border-color: red;
+}
+
 .button:hover{
   cursor: pointer;
+}
+
+.event-list {
+  list-style-type: none;
+}
+
+.event-list>li .date-span {
+  padding-right: 10px;
+  color: $today-text-color;
+}
+
+.event-list>li>a {
+  text-decoration: none;
+}
+
+.home-header {
+  width: auto;
+  display: table;
+}
+
+.react-navbar-ul {
+  float: left;
+  list-style-type: none;
+}
+
+.react-navbar-li {
+  background-color: $react-navbar-li-background-color;
+  border-color: $react-navbar-li-background-color;
+  display: inline-block;
+  min-width: 70px;
+  height: 48px;
+  line-height: 48px;
+  text-align: center;
+  color: $react-navbar-li-color;
+  cursor: pointer;
+  margin: 0;
+}
+
+.react-navbar-li-active {
+  background-color: $react-navbar-li-color;
+  color: $react-navbar-li-background-color;
 }
 
 .day-div {
@@ -148,4 +193,8 @@
 
 .datepicker {
   display: table;
+}
+
+.create-button-container {
+  margin-bottom: 5px;
 }

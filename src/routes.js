@@ -1,5 +1,6 @@
 "use strict";
 
+import moment from "moment";
 import express from "express";
 var router = express.Router();
 
@@ -19,11 +20,51 @@ router.get("/api/events/:id", (req, res) => {
 });
 
 router.get("/api/events/date/:date", (req, res) => {
-  console.log(req.params.date)
-  Event.find({ "start": { $gt: req.params.date } }, (err, response) => {
+  const min = moment(req.params.date).utcOffset("+03:00");
+  const max = moment(req.params.date).utcOffset("+03:00").add(1, "day");
+  Event.find({
+    "start": {
+      $gte: min,
+      $lt: max
+    }
+  }, (err, response) => {
     if (err) return res.sendStatus(500);
-    res.json({ events: response })
-  }).sort({ "start": 1 })
+    res.json({ events: response });
+  }).sort({
+    "start": 1
+  })
+});
+
+router.get("/api/events/week/:date", (req, res) => {
+  const min = moment(req.params.date).utcOffset("+03:00").startOf("week");
+  const max = moment(req.params.date).utcOffset("+03:00").endOf("week");
+  Event.find({
+    "start": {
+      $gte: min,
+      $lt: max
+    }
+  }, (err, response) => {
+    if (err) return res.sendStatus(500);
+    res.json({ events: response });
+  }).sort({
+    "start": 1
+  })
+});
+
+router.get("/api/events/month/:date", (req, res) => {
+  const min = moment(req.params.date).utcOffset("+03:00").startOf("month");
+  const max = moment(req.params.date).utcOffset("+03:00").endOf("month");
+  Event.find({
+    "start": {
+      $gte: min,
+      $lt: max
+    }
+  }, (err, response) => {
+    if (err) return res.sendStatus(500);
+    res.json({ events: response });
+  }).sort({
+    "start": 1
+  })
 });
 
 router.post("/api/event", (req, res) => {

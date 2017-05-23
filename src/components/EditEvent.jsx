@@ -35,7 +35,13 @@ class EditEvent extends Component {
     });
   }
 
-  handleInputChange = (event) => this.setState({ [event.target.name]: event.target.value })
+  handleTitleChange = (event) => this.setState({ title: event.target.value })
+
+  handleLocalChange = (event) => this.setState({ local: event.target.value })
+
+  handleDescriptionChange = (event) => this.setState({ description: event.target.value })
+
+  // handleInputChange = (event) => this.setState({ [event.target.name]: event.target.value })
 
   handleSelectStart = (date) => this.setState({ start: date })
 
@@ -70,7 +76,9 @@ class EditEvent extends Component {
         start={ this.state.start }
         end={ this.state.end }
         handleSubmit={ this.handleSubmit }
-        handleInputChange={ this.handleInputChange }
+        handleTitleChange={ this.handleTitleChange }
+        handleLocalChange={ this.handleLocalChange }
+        handleDescriptionChange={ this.handleDescriptionChange }
         handleSelectStart={ this.handleSelectStart }
         handleSelectEnd={ this.handleSelectEnd } />
     );

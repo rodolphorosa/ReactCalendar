@@ -5820,8 +5820,45 @@ button.close {
 .absolute {
   position: absolute; }
 
+.invalid-date, .invalid-input {
+  border-color: red; }
+
 .button:hover, .right-left-button:hover, .up-down-button:hover, .toggleButton:hover {
   cursor: pointer; }
+
+.event-list {
+  list-style-type: none; }
+
+.event-list > li .date-span {
+  padding-right: 10px;
+  color: #6495ed; }
+
+.event-list > li > a {
+  text-decoration: none; }
+
+.home-header {
+  width: auto;
+  display: table; }
+
+.react-navbar-ul {
+  float: left;
+  list-style-type: none; }
+
+.react-navbar-li {
+  background-color: #6495ed;
+  border-color: #6495ed;
+  display: inline-block;
+  min-width: 70px;
+  height: 48px;
+  line-height: 48px;
+  text-align: center;
+  color: #ffffff;
+  cursor: pointer;
+  margin: 0; }
+
+.react-navbar-li-active {
+  background-color: #ffffff;
+  color: #6495ed; }
 
 .day-div, .today-div, .out-of-month-div, .pre-selected-div {
   font-family: Helvetica, sans-serif;
@@ -5945,3 +5982,6 @@ button.close {
 
 .datepicker {
   display: table; }
+
+.create-button-container {
+  margin-bottom: 5px; }

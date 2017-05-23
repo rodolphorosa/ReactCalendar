@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import MonthHeader from "./MonthHeader";
 import Month from "./Month";
-import Time from "./Time";
 import moment from "moment";
 import PropTypes from "prop-types";
 import classnames from "classnames";

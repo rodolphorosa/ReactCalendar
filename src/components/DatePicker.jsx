@@ -25,7 +25,8 @@ class DatePicker extends Component {
     return {
       selected: this.props.preSelected ? this.props.preSelected : moment().locale("pt-BR"),
       calendarOpen: false,
-      timerOpen: false
+      timerOpen: false,
+      valid: true
     }
   }
 
@@ -47,6 +48,10 @@ class DatePicker extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.preSelected !== this.props.preSelected) {
       this.setState({ selected: nextProps.preSelected })
+    }
+
+    if (nextProps.valid !== this.props.valid) {
+      this.setState({ valid: nextProps.valid })
     }
   }
 
@@ -132,12 +137,17 @@ class DatePicker extends Component {
 
   render() {
     const format = this.props.format ? this.props.format : "DD/MM/YYYY HH:mm";
+    const classes = classnames({
+      "form-control": true,
+      "costum-input-text": true,
+      "invalid-date": !this.state.valid
+    })
     return(
       <div className="form-group datepicker">
         <div className="input-container">
           <label htmlFor={ this.props.name }>{ this.props.label }</label>
           <input
-            className="form-control costum-input-text"
+            className={ classes }
             name={ this.props.name }
             type="text"
             ref={ (input) => { this.input = input; } }

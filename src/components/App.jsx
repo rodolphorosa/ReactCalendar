@@ -7,11 +7,11 @@ import AddEvent from "./AddEvent";
 import EditEvent from "./EditEvent";
 
 const Header = () => (
-  <header>
+  <div className="header">
     <Link to="/">
       <h1>React Calendar</h1>
     </Link>
-  </header>
+  </div>
 );
 
 const Footer = () => (
@@ -43,7 +43,6 @@ const App = () => (
       <Route exact path="/events/edit/:id" component={ EditEvent } />
       <Route component={ PageNotFound } />
     </Switch>
-    <Footer />
   </div>
 );
 

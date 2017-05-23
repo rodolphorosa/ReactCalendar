@@ -35,7 +35,7 @@ class Day extends Component {
       "day-div": !this.isToday(),
       "today-div": this.isToday(),
       "out-of-month-div": this.isOutOfMonth(),
-      "pre-selected-div": this.isPreSelected()      
+      "pre-selected-div": this.isPreSelected()
     });
 
     return(
