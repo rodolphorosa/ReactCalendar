@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class Navbar extends Component {
   constructor(props) {
@@ -23,10 +24,21 @@ class Navbar extends Component {
     return(
       <nav className="react-navbar">
         <ul className="react-navbar-ul">
-          <li className="react-navbar-li" onClick={this.requestToday}>Hoje</li>
-          <li className="react-navbar-li" onClick={this.requestDate}>Dia</li>
-          <li className="react-navbar-li" onClick={this.requestWeek}>Semana</li>
-          <li className="react-navbar-li" onClick={this.requestMonth}>Mês</li>
+          <li className="react-navbar-li">
+            <Link to="/add">Criar</Link>
+          </li>
+          <li className="react-navbar-li" onClick={this.requestToday}>
+            <Link activeClassName="active" to="">Hoje</Link>
+          </li>
+          <li className="react-navbar-li" onClick={this.requestDate}>
+            <Link activeClassName="active" to="">Dia</Link>
+          </li>
+          <li className="react-navbar-li" onClick={this.requestWeek}>
+            <Link activeClassName="active" to="">Semana</Link>
+          </li>
+          <li className="react-navbar-li" onClick={this.requestMonth}>
+            <Link activeClassName="active" to="">Mês</Link>
+          </li>
         </ul>
       </nav>
     );

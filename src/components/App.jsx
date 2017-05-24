@@ -7,42 +7,54 @@ import AddEvent from "./AddEvent";
 import EditEvent from "./EditEvent";
 
 const Header = () => (
-  <div className="header">
-    <Link to="/">
-      <h1>React Calendar</h1>
-    </Link>
-  </div>
+  <header className="header">
+    <div className="clock-wrapper">
+      <div className="clock">
+        <div className="hour-hand"></div>
+        <div className="minute-hand"></div>
+        <div className="second-hand"></div>
+        <div className="middle"></div>
+      </div>
+    </div>
+    <div>
+      <Link to="/">
+        React Calendar
+      </Link>
+    </div>
+  </header>
 );
 
 const Footer = () => (
-  <footer>
-    <p>
-      React Calendar is an example of application
-      that uses <strong>ReactJS</strong> and <strong>NodeJS</strong>.
-    </p>
+  <footer className="footer">
+    React Calendar is an example of <span className="mern-stack">MERN Stack</span> application.
+    Developed by Rodolpho Rosa.
+    Access <a className="github" href="https://github.com/rodolphorosa">Github</a>
   </footer>
 );
 
 const PageNotFound = () => (
-  <div>
+  <div className="page-not-found">
     <h1>404</h1>
     <h3>Page not found!</h3>
     <Link to="/">
-      <p>Voltar para página principal.</p>
+      &laquo; Página principal.
     </Link>
   </div>
 );
 
 const App = () => (
-  <div className="container">
+  <div>
     <Header />
-    <Switch>
-      <Route exact path="/" component={ Home }/>
-      <Route exact path="/add" component={ AddEvent } />
-      <Route exact path="/events/:id" component={ Event } />
-      <Route exact path="/events/edit/:id" component={ EditEvent } />
-      <Route component={ PageNotFound } />
-    </Switch>
+    <div className="main-container">
+      <Switch>
+        <Route exact path="/" component={ Home }/>
+        <Route exact path="/add" component={ AddEvent } />
+        <Route exact path="/events/:id" component={ Event } />
+        <Route exact path="/events/edit/:id" component={ EditEvent } />
+        <Route component={ PageNotFound } />
+      </Switch>
+    </div>
+    <Footer />
   </div>
 );
 

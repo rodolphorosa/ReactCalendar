@@ -139,7 +139,7 @@ class DatePicker extends Component {
     const format = this.props.format ? this.props.format : "DD/MM/YYYY HH:mm";
     const classes = classnames({
       "form-control": true,
-      "costum-input-text": true,
+      "custom-input-text": true,
       "invalid-date": !this.state.valid
     })
     return(
@@ -154,6 +154,9 @@ class DatePicker extends Component {
             value={ this.state.selected.format(format) }
             readOnly
             onClick={ this.onInputClick.bind(this) } />
+          <div className={this.state.valid ? "hidden":"invalid-field-message"}>
+            { this.props.invalidFieldMessage }
+          </div>
           <div className={ this.state.calendarOpen ? 'absolute':'hidden' }>
             <Calendar
               preSelected={ this.state.selected }

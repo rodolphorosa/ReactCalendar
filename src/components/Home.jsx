@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import moment from "moment";
 import DatePicker from "./DatePicker";
-import Sidebar from "./Sidebar";
+import CalendarMenu from "./CalendarMenu";
 import Navbar from "./Navbar";
 
 const REQUEST_DATE_FORMAT = "YYYY-MM-DD[T]HH:mm:ss.SSS[Z]";
@@ -78,58 +78,70 @@ class Home extends Component {
     this.requestEventsByDate(date)
   }
 
-  render() {
-    if(this.state.events.length > 0) {
-      var eventList = this.state.events.map((event) => {
-        return(
-          <li key={ event._id }>
-            <span className="date-span">
-              { moment(event.start).locale("pt-BR").format("DD/MM/YYYY") }
-            </span>
-            <span className="date-span">
-              { moment(event.start).locale("pt-BR").format("HH:mm") }
-            </span>
-            <Link to={`/events/${ event._id }`}>
-              { event.title }
-            </Link>
-          </li>
-        );
-      });
+  renderCalendarMenu() {
+    return <CalendarMenu
+            date={this.state.date}
+            onSelect={this.onSelect}/>
 
+  }
+
+  renderNavbar() {
+    return <Navbar
+            date={this.state.date}
+            requestToday={this.requestToday}
+            requestDate={this.requestEventsByDate}
+            requestWeek={this.requestEventsByWeek}
+            requestMonth={this.requestEventsByMonth} />
+  }
+
+  renderEventListMenu() {
+    var eventList = this.state.events.map((event) => {
       return(
-        <div className="row">
-          <Sidebar date={this.state.date} onSelect={this.onSelect} />
-          <div className="col-sm-8">
-            <div className="home-header">
-              <Navbar
-                date={this.state.date}
-                requestToday={this.requestToday}
-                requestDate={this.requestEventsByDate}
-                requestWeek={this.requestEventsByWeek}
-                requestMonth={this.requestEventsByMonth} />
-            </div>
+        <li key={ event._id }>
+          <span className="date-span">
+            { moment(event.start).locale("pt-BR").format("DD/MM/YYYY") }
+          </span>
+          <span className="date-span">
+            { moment(event.start).locale("pt-BR").format("HH:mm") }
+          </span>
+          <Link to={`/events/${ event._id }`}>
+            { event.title }
+          </Link>
+        </li>
+      );
+    });
+
+    return <div className="event-list-menu">
+            { this.renderNavbar() }
             <div className="event-list-container">
               <ul className="event-list">{ eventList }</ul>
             </div>
           </div>
-        </div>
-      );
+  }
 
-    } else {
-      return (
-        <div className="row">
-          <Sidebar date={this.state.date} onSelect={this.onSelect} />
-          <div className="col-sm-8">
-            <div>
-              { this.state.date.locale("pt-BR").format("dddd, DD/MM/YYYY") }
-            </div>
+  renderNoEventContainer() {
+    return <div className="event-list-menu">
+            { this.renderNavbar() }
             <div className="no-event-container">
               Não há eventos cadastrados.
             </div>
           </div>
-        </div>
-      );
+  }
+
+  render() {
+    var eventMenu;
+    if(this.state.events.length > 0) {
+      eventMenu = this.renderEventListMenu();
+    } else {
+      eventMenu = this.renderNoEventContainer();
     }
+
+    return(
+      <div>
+        { this.renderCalendarMenu() }
+        { eventMenu }
+      </div>
+    );
   }
 }
 

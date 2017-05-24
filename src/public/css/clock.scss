@@ -1,0 +1,71 @@
+@keyframes tick {
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
+.clock-wrapper {
+  display: table;
+  margin: 0 auto;
+}
+
+.clock {
+  width: 120px;
+  height: 120px;
+  border: solid #ffffff;
+  border-width: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0);
+  position: relative;
+}
+
+.hour-hand {
+  background-color: #ffffff;
+  height: 30%;
+  width: 2.5%;
+  top: 20%;
+  left: 48.75%;
+  position: absolute;
+  transform-origin: 50% 100%;
+  animation: tick 43200s infinite linear;
+  // transform: rotateZ(45deg);
+  z-index: 1;
+}
+
+.minute-hand {
+  background-color: #ffffff;
+  height: 40%;
+  width: 2%;
+  top: 10%;
+  left: 49%;
+  position: absolute;
+  transform-origin: 50% 100%;
+  animation: tick 3600s infinite linear;
+  // transform: rotateZ(60deg);
+  z-index: 2;
+}
+
+.second-hand {
+  background-color: #bc7dff;
+  height: 45%;
+  width: 1%;
+  top: 5%;
+  left: 49.5%;
+  position: absolute;
+  transform-origin: 50% 100%;
+  animation: tick 60s infinite linear;
+  z-index: 3;
+}
+
+.middle {
+  border-radius: 50%;
+  height: 5%;
+  width: 5%;
+  top: 47.5%;
+  left: 47.5%;
+  position: absolute;
+  transform-origin: 50% 50%;
+  // transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  z-index: 4;
+}

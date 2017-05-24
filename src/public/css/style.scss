@@ -1,6 +1,12 @@
 @import "./bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
-@import "mixins";
-@import "variables";
+@import "mixins.scss";
+@import "variables.scss";
+@import "clock.scss";
+
+body {
+	background-color: #f5f5f5;
+	font-family: 'Segoe UI', Tahoma, sans-serif;
+}
 
 .hidden {
   display: none;
@@ -14,49 +20,155 @@
   border-color: red;
 }
 
+.invalid-field-message, .submission-error-message {
+	color: red;
+}
+
 .button:hover{
   cursor: pointer;
 }
 
-.event-list {
-  list-style-type: none;
+.btn-event {
+	margin-right: 2px;
 }
 
-.event-list>li .date-span {
+.mern-stack, .github {
+	font-weight: bold;
+}
+
+.page-not-found {
+	text-align: center;
+}
+
+.root {
+  width: 100%;
+}
+
+.header {
+  background-color: #614789;
+  text-align: center;
+  padding: 10px;
+	width: 100;
+}
+
+.header a {
+  text-decoration: none;
+  color: #bc7dff;
+  font-size: 48px;
+}
+
+.footer {
+	text-align: center;
+	padding: 20px;
+}
+
+.main-container {
+  margin: 0 auto;
+  display: table;
+}
+
+.calendar-menu {
+  display: table;
+  margin: 20px auto;
+}
+
+.calendar-menu-inner {
+  margin: 2px auto;
+}
+
+.no-event-container {
+	text-align: center;
+	font-size: 16px;
+}
+
+.event-list-menu {
+  padding: 15px 30px 15px 30px;
+  margin: 0 auto;
+  min-width: 420px;
+  border: solid;
+  border-color: #000000;
+  border-width: 5px;
+}
+
+.event-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+}
+
+.date-span {
   padding-right: 10px;
-  color: $today-text-color;
+  font-weight: bold;
 }
 
 .event-list>li>a {
   text-decoration: none;
+  color: #000000;
 }
 
-.home-header {
-  width: auto;
-  display: table;
+.react-navbar {
+  width: 100%;
+  margin-bottom: 10px;
+  background-color: $react-navbar-li-background-color;
 }
 
 .react-navbar-ul {
-  float: left;
-  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 .react-navbar-li {
-  background-color: $react-navbar-li-background-color;
-  border-color: $react-navbar-li-background-color;
+  list-style-type: none;
   display: inline-block;
-  min-width: 70px;
-  height: 48px;
-  line-height: 48px;
-  text-align: center;
+  padding: 10px 20px;
+  background-color: $react-navbar-li-background-color;
   color: $react-navbar-li-color;
+  font-weight: bold;
   cursor: pointer;
-  margin: 0;
 }
 
-.react-navbar-li-active {
-  background-color: $react-navbar-li-color;
-  color: $react-navbar-li-background-color;
+.react-navbar-li a {
+  text-decoration: none;
+  color: $react-navbar-li-color;
+}
+
+.react-navbar-li:hover, .active {
+  background-color: $on-hover-react-navbar-li-background-color;
+}
+
+.event-table-container {
+	margin: 20px 0 20px 0;
+}
+
+.event-detail {
+	padding: 15px 30px 15px 30px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border: solid;
+	border-color: #000000;
+	border-width: 5px;
+}
+
+.event-field-name, .event-field-value {
+	padding: 7px 0 7px 0;
+}
+
+.event-field-name {
+	font-weight: bold;
+	width: 30%;
+}
+
+.event-field-value {
+	width: 70%;
+}
+
+.form-container {
+	padding: 20px;
+}
+
+.event-form {
+	margin-top: 10px;
 }
 
 .day-div {
@@ -80,7 +192,6 @@
 .out-of-month-div {
   @extend .day-div;
   color: $outta-month-text-color;
-  // visibility: hidden;
 }
 
 .sunday {
@@ -142,12 +253,20 @@
   margin-bottom: 5px;
 }
 
-.costum-input-text {
+.custom-input-text {
+  @include input-font-style;
+  -webkit-transition: width 2s;
+  transition: width 2s;
+}
+
+.custom-textarea {
   @include input-font-style;
 }
 
-.costum-textarea {
+.home-date-input {
   @include input-font-style;
+  text-align: center;
+  min-width: $month-div-width + 10px;
 }
 
 .input-time {

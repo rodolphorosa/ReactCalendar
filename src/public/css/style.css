@@ -5814,6 +5814,71 @@ button.close {
   .hidden-print {
     display: none !important; } }
 
+@keyframes tick {
+  100% {
+    transform: rotateZ(360deg); } }
+
+.clock-wrapper {
+  display: table;
+  margin: 0 auto; }
+
+.clock {
+  width: 120px;
+  height: 120px;
+  border: solid #ffffff;
+  border-width: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0);
+  position: relative; }
+
+.hour-hand {
+  background-color: #ffffff;
+  height: 30%;
+  width: 2.5%;
+  top: 20%;
+  left: 48.75%;
+  position: absolute;
+  transform-origin: 50% 100%;
+  animation: tick 43200s infinite linear;
+  z-index: 1; }
+
+.minute-hand {
+  background-color: #ffffff;
+  height: 40%;
+  width: 2%;
+  top: 10%;
+  left: 49%;
+  position: absolute;
+  transform-origin: 50% 100%;
+  animation: tick 3600s infinite linear;
+  z-index: 2; }
+
+.second-hand {
+  background-color: #bc7dff;
+  height: 45%;
+  width: 1%;
+  top: 5%;
+  left: 49.5%;
+  position: absolute;
+  transform-origin: 50% 100%;
+  animation: tick 60s infinite linear;
+  z-index: 3; }
+
+.middle {
+  border-radius: 50%;
+  height: 5%;
+  width: 5%;
+  top: 47.5%;
+  left: 47.5%;
+  position: absolute;
+  transform-origin: 50% 50%;
+  background-color: #ffffff;
+  z-index: 4; }
+
+body {
+  background-color: #f5f5f5;
+  font-family: 'Segoe UI', Tahoma, sans-serif; }
+
 .hidden {
   display: none; }
 
@@ -5823,42 +5888,127 @@ button.close {
 .invalid-date, .invalid-input {
   border-color: red; }
 
+.invalid-field-message, .submission-error-message {
+  color: red; }
+
 .button:hover, .right-left-button:hover, .up-down-button:hover, .toggleButton:hover {
   cursor: pointer; }
 
-.event-list {
-  list-style-type: none; }
+.btn-event {
+  margin-right: 2px; }
 
-.event-list > li .date-span {
-  padding-right: 10px;
-  color: #6495ed; }
+.mern-stack, .github {
+  font-weight: bold; }
 
-.event-list > li > a {
-  text-decoration: none; }
+.page-not-found {
+  text-align: center; }
 
-.home-header {
-  width: auto;
+.root {
+  width: 100%; }
+
+.header {
+  background-color: #614789;
+  text-align: center;
+  padding: 10px;
+  width: 100; }
+
+.header a {
+  text-decoration: none;
+  color: #bc7dff;
+  font-size: 48px; }
+
+.footer {
+  text-align: center;
+  padding: 20px; }
+
+.main-container {
+  margin: 0 auto;
   display: table; }
 
+.calendar-menu {
+  display: table;
+  margin: 20px auto; }
+
+.calendar-menu-inner {
+  margin: 2px auto; }
+
+.no-event-container {
+  text-align: center;
+  font-size: 16px; }
+
+.event-list-menu {
+  padding: 15px 30px 15px 30px;
+  margin: 0 auto;
+  min-width: 420px;
+  border: solid;
+  border-color: #000000;
+  border-width: 5px; }
+
+.event-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  font-size: 100%; }
+
+.date-span {
+  padding-right: 10px;
+  font-weight: bold; }
+
+.event-list > li > a {
+  text-decoration: none;
+  color: #000000; }
+
+.react-navbar {
+  width: 100%;
+  margin-bottom: 10px;
+  background-color: #f2f2f2; }
+
 .react-navbar-ul {
-  float: left;
-  list-style-type: none; }
+  margin: 0;
+  padding: 0; }
 
 .react-navbar-li {
-  background-color: #6495ed;
-  border-color: #6495ed;
+  list-style-type: none;
   display: inline-block;
-  min-width: 70px;
-  height: 48px;
-  line-height: 48px;
-  text-align: center;
-  color: #ffffff;
-  cursor: pointer;
-  margin: 0; }
+  padding: 10px 20px;
+  background-color: #f2f2f2;
+  color: rgba(0, 0, 0, 0.7);
+  font-weight: bold;
+  cursor: pointer; }
 
-.react-navbar-li-active {
-  background-color: #ffffff;
-  color: #6495ed; }
+.react-navbar-li a {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.7); }
+
+.react-navbar-li:hover, .active {
+  background-color: #e3e3e3; }
+
+.event-table-container {
+  margin: 20px 0 20px 0; }
+
+.event-detail {
+  padding: 15px 30px 15px 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: solid;
+  border-color: #000000;
+  border-width: 5px; }
+
+.event-field-name, .event-field-value {
+  padding: 7px 0 7px 0; }
+
+.event-field-name {
+  font-weight: bold;
+  width: 30%; }
+
+.event-field-value {
+  width: 70%; }
+
+.form-container {
+  padding: 20px; }
+
+.event-form {
+  margin-top: 10px; }
 
 .day-div, .today-div, .out-of-month-div, .pre-selected-div {
   font-family: Helvetica, sans-serif;
@@ -5938,13 +6088,21 @@ button.close {
   text-align: center;
   margin-bottom: 5px; }
 
-.costum-input-text {
+.custom-input-text {
+  font-family: Consolas, sans-serif;
+  font-size: 12px;
+  -webkit-transition: width 2s;
+  transition: width 2s; }
+
+.custom-textarea {
   font-family: Consolas, sans-serif;
   font-size: 12px; }
 
-.costum-textarea {
+.home-date-input {
   font-family: Consolas, sans-serif;
-  font-size: 12px; }
+  font-size: 12px;
+  text-align: center;
+  min-width: 236px; }
 
 .input-time {
   font-family: Helvetica, sans-serif;

@@ -35,24 +35,46 @@ class Event extends Component {
   render() {
     var event = this.state.event;
     return(
-      <div>
-        <p><strong>Evento:</strong>{ event.title }</p>
-        <p><strong>Descrição:</strong>{ event.description }</p>
-        <p><strong>Local:</strong>{ event.local }</p>
-        <p><strong>Início:</strong>
-          { moment(this.state.event.start).format("DD/MM/YYYY HH:mm") }
-        </p>
-        <p><strong>Término:</strong>
-          { moment(this.state.event.end).format("DD/MM/YYYY HH:mm") }
-        </p>
-        <Link to={`/events/edit/${ this.props.match.params.id }`}>
-          <button className="btn btn-default">Editar</button>
-        </Link>
-        <button
-          className="btn btn-default"
-          onClick={ this.requestDeleteEvent }>
-          Excluir
-        </button>
+      <div className="event-detail">
+        <div className="event-name-div"><h2>{ event.title }</h2></div>
+        <div className="event-table-container">
+          <table className="event-table">
+            <tbody className="event-tbody">
+              <tr>
+                <td className="event-field-name">Onde</td>
+                <td className="event-field-value">{ event.local }</td>
+              </tr>
+              <tr>
+                <td className="event-field-name">Descrição</td>
+                <td className="event-field-value">{ event.description }</td>
+              </tr>
+              <tr>
+                <td className="event-field-name">Início</td>
+                <td className="event-field-value">
+                  { moment(event.start).locale("pt-BR").format("dddd, LLL") }
+                </td>
+              </tr>
+              <tr>
+                <td className="event-field-name">Término</td>
+                <td className="event-field-value">
+                  { moment(event.end).locale("pt-BR").format("dddd, LLL") }
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <Link to={`/events/edit/${ this.props.match.params.id }`}>
+            <button className="btn btn-default btn-event">
+              Editar
+            </button>
+          </Link>
+          <button
+            className="btn btn-default btn-event"
+            onClick={ this.requestDeleteEvent }>
+            Excluir
+          </button>
+        </div>
       </div>
     );
   }

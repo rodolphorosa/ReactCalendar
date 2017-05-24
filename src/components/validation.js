@@ -11,7 +11,6 @@ export function isEndDateValid(startDate, endDate) {
 }
 
 export function isFormValid(title, startDate, endDate) {
-  return isTitleValid(title)
-    && isStartDateValid(startDate, endDate)
-    && isEndDateValid(startDate, endDate)
+  console.log(title)
+  return isTitleValid(title) && isStartDateValid(startDate, endDate) && isEndDateValid(startDate, endDate)
 }

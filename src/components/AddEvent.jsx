@@ -10,58 +10,37 @@ class AddEvent extends Component {
   }
 
   getInitialState = () => {
-    let now = moment().clone().locale("pt-BR").seconds(0).milliseconds(0)
     return {
-      title: "",
-      description: "",
-      local: "",
-      start: now,
-      end: now.clone().add(1, "hours")
+      eventCreated: true
     }
   }
 
-  // handleInputChange = (event) => this.setState({ [event.target.name]: event.target.value })
-
-  handleTitleChange = (event) => this.setState({ title: event.target.value })
-
-  handleLocalChange = (event) => this.setState({ local: event.target.value })
-
-  handleDescriptionChange = (event) => this.setState({ description: event.target.value })
-
-  handleSelectStart = (date) => this.setState({ start: date })
-
-  handleSelectEnd = (date) => this.setState({ end: date })
-
-  handleSubmit = (event) => {
+  handleSubmit = (data) => {
     axios({
       url: "/api/event",
       method: "post",
-      data: {
-        title: this.state.title,
-        local: this.state.local,
-        description: this.state.description,
-        start: this.state.start,
-        end: this.state.end
-      }
+      data: data
     }).then((response) => {
       this.props.history.push("/")
       console.info("Event successfully saved!")
     }).catch((response) => {
       console.error("Could not save event!")
+      this.setState({ eventCreated: false })
     });
   }
 
   render() {
+    const now = moment().clone().locale("pt-BR").seconds(0).milliseconds(0);
     return(
-      <EventForm
-        start={ this.state.start }
-        end={ this.state.end }
-        handleSubmit={ this.handleSubmit }
-        handleTitleChange={ this.handleTitleChange }
-        handleLocalChange={ this.handleLocalChange }
-        handleDescriptionChange={ this.handleDescriptionChange }
-        handleSelectStart={ this.handleSelectStart }
-        handleSelectEnd={ this.handleSelectEnd } />
+      <div className="form-container">
+        <div className={this.state.eventCreated? "hidden":"submission-error-message"}>
+          Não foi possível salvar o evento.
+        </div>
+        <EventForm
+          start={ now }
+          end={ now.clone().add(2, "hours") }
+          handleSubmit={ this.handleSubmit } />
+      </div>
     );
   }
 }
