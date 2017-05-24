@@ -57,7 +57,7 @@ var EditEvent = function (_Component) {
         data: data
       }).then(function (response) {
         _this.props.history.push("/events/" + _this.props.match.params.id);
-        console.info("Event successfully update");
+        console.info("Event successfully updated");
       }).catch(function (response) {
         console.error("An error occured");
         _this.setState({ eventUpdated: false });

@@ -82,7 +82,6 @@ var Home = function (_Component) {
     _this.requestToday = function () {
       var today = (0, _moment2.default)().locale("pt-BR").startOf("day");
       var url = "/api/events/date/" + today.format(REQUEST_DATE_FORMAT);
-      console.log(url);
       _this.requestEventsByParam(url, today);
     };
 

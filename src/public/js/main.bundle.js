@@ -46411,7 +46411,7 @@ var EditEvent = function (_Component) {
         data: data
       }).then(function (response) {
         _this.props.history.push("/events/" + _this.props.match.params.id);
-        console.info("Event successfully update");
+        console.info("Event successfully updated");
       }).catch(function (response) {
         console.error("An error occured");
         _this.setState({ eventUpdated: false });
@@ -46743,7 +46743,6 @@ var Home = function (_Component) {
     _this.requestToday = function () {
       var today = (0, _moment2.default)().locale("pt-BR").startOf("day");
       var url = "/api/events/date/" + today.format(REQUEST_DATE_FORMAT);
-      console.log(url);
       _this.requestEventsByParam(url, today);
     };
 
@@ -47892,7 +47891,6 @@ function isEndDateValid(startDate, endDate) {
 }
 
 function isFormValid(title, startDate, endDate) {
-  console.log(title);
   return isTitleValid(title) && isStartDateValid(startDate, endDate) && isEndDateValid(startDate, endDate);
 }
 

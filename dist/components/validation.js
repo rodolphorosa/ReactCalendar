@@ -20,6 +20,5 @@ function isEndDateValid(startDate, endDate) {
 }
 
 function isFormValid(title, startDate, endDate) {
-  console.log(title);
   return isTitleValid(title) && isStartDateValid(startDate, endDate) && isEndDateValid(startDate, endDate);
 }
