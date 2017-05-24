@@ -2,8 +2,10 @@
 
 import mongoose from "mongoose";
 
+const uri = process.env.MONGO_URI || "mongodb://localhost/reactCalendarDB";
+
 /* Conecta a base de dados. */
-mongoose.connect("mongodb://localhost/reactCalendarDB");
+mongoose.connect(uri);
 
 mongoose.connection.on("error", () => {
   console.log(

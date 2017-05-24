@@ -28,16 +28,16 @@ class Navbar extends Component {
             <Link to="/add">Criar</Link>
           </li>
           <li className="react-navbar-li" onClick={this.requestToday}>
-            <Link activeClassName="active" to="">Hoje</Link>
+            Hoje
           </li>
           <li className="react-navbar-li" onClick={this.requestDate}>
-            <Link activeClassName="active" to="">Dia</Link>
+            Dia
           </li>
           <li className="react-navbar-li" onClick={this.requestWeek}>
-            <Link activeClassName="active" to="">Semana</Link>
+            Semana
           </li>
           <li className="react-navbar-li" onClick={this.requestMonth}>
-            <Link activeClassName="active" to="">Mês</Link>
+            Mês
           </li>
         </ul>
       </nav>

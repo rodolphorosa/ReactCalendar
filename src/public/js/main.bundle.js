@@ -28348,8 +28348,8 @@ var EventForm = function (_Component) {
         this.setState({ title: nextProps.title });
       }
 
-      if (nextProps.local !== this.props.title) {
-        this.setState({ local: this.props.local });
+      if (nextProps.local !== this.props.local) {
+        this.setState({ local: nextProps.local });
       }
 
       if (nextProps.description !== this.props.description) {
@@ -47313,38 +47313,22 @@ var Navbar = function (_Component) {
           _react2.default.createElement(
             "li",
             { className: "react-navbar-li", onClick: this.requestToday },
-            _react2.default.createElement(
-              _reactRouterDom.Link,
-              { activeClassName: "active", to: "" },
-              "Hoje"
-            )
+            "Hoje"
           ),
           _react2.default.createElement(
             "li",
             { className: "react-navbar-li", onClick: this.requestDate },
-            _react2.default.createElement(
-              _reactRouterDom.Link,
-              { activeClassName: "active", to: "" },
-              "Dia"
-            )
+            "Dia"
           ),
           _react2.default.createElement(
             "li",
             { className: "react-navbar-li", onClick: this.requestWeek },
-            _react2.default.createElement(
-              _reactRouterDom.Link,
-              { activeClassName: "active", to: "" },
-              "Semana"
-            )
+            "Semana"
           ),
           _react2.default.createElement(
             "li",
             { className: "react-navbar-li", onClick: this.requestMonth },
-            _react2.default.createElement(
-              _reactRouterDom.Link,
-              { activeClassName: "active", to: "" },
-              "M\xEAs"
-            )
+            "M\xEAs"
           )
         )
       );

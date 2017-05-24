@@ -45,8 +45,8 @@ class EventForm extends Component {
       this.setState({ title: nextProps.title })
     }
 
-    if (nextProps.local !== this.props.title) {
-      this.setState({ local: this.props.local })
+    if (nextProps.local !== this.props.local) {
+      this.setState({ local: nextProps.local })
     }
 
     if (nextProps.description !== this.props.description) {

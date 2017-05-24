@@ -55,7 +55,6 @@ class Home extends Component {
   requestToday = () => {
     const today = moment().locale("pt-BR").startOf("day");
     const url = "/api/events/date/" + today.format(REQUEST_DATE_FORMAT);
-    console.log(url)
     this.requestEventsByParam(url, today);
   }
 
