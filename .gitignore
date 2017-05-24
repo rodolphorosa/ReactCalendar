@@ -8,6 +8,3 @@ bower_components
 
 #Babel config file
 .babelrc
-
-#Compiled files
-dist
