@@ -135,8 +135,8 @@ class Home extends Component {
       eventMenu = this.renderNoEventContainer();
     }
 
-    return(
-      <div>
+    return(      
+      <div className="home">
         { this.renderCalendarMenu() }
         { eventMenu }
       </div>

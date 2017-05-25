@@ -24,9 +24,6 @@ class Navbar extends Component {
     return(
       <nav className="react-navbar">
         <ul className="react-navbar-ul">
-          <li className="react-navbar-li">
-            <Link to="/add">Criar</Link>
-          </li>
           <li className="react-navbar-li" onClick={this.requestToday}>
             Hoje
           </li>

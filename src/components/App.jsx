@@ -44,6 +44,7 @@ const PageNotFound = () => (
 
 const App = () => (
   <div>
+    <Link to="/add"><div className="cbtn-parent"><div className="cbtn-child">&#43;</div></div></Link>
     <Header />
     <div className="main-container">
       <Switch>

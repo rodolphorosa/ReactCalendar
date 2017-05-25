@@ -28545,6 +28545,19 @@ var App = function App() {
   return _react2.default.createElement(
     "div",
     null,
+    _react2.default.createElement(
+      _reactRouterDom.Link,
+      { to: "/add" },
+      _react2.default.createElement(
+        "div",
+        { className: "cbtn-parent" },
+        _react2.default.createElement(
+          "div",
+          { className: "cbtn-child" },
+          "+"
+        )
+      )
+    ),
     _react2.default.createElement(Header, null),
     _react2.default.createElement(
       "div",
@@ -46862,7 +46875,7 @@ var Home = function (_Component) {
 
       return _react2.default.createElement(
         "div",
-        null,
+        { className: "home" },
         this.renderCalendarMenu(),
         eventMenu
       );
@@ -47300,15 +47313,6 @@ var Navbar = function (_Component) {
         _react2.default.createElement(
           "ul",
           { className: "react-navbar-ul" },
-          _react2.default.createElement(
-            "li",
-            { className: "react-navbar-li" },
-            _react2.default.createElement(
-              _reactRouterDom.Link,
-              { to: "/add" },
-              "Criar"
-            )
-          ),
           _react2.default.createElement(
             "li",
             { className: "react-navbar-li", onClick: this.requestToday },

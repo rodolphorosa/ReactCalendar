@@ -5910,7 +5910,7 @@ body {
   background-color: #614789;
   text-align: center;
   padding: 10px;
-  width: 100; }
+  min-width: 100; }
 
 .header a {
   text-decoration: none;
@@ -5930,14 +5930,15 @@ body {
   margin: 20px auto; }
 
 .calendar-menu-inner {
-  margin: 2px auto; }
+  margin: 2px auto;
+  display: block; }
 
 .no-event-container {
   text-align: center;
   font-size: 16px; }
 
 .event-list-menu {
-  padding: 15px 30px 15px 30px;
+  padding: 15px;
   margin: 0 auto;
   min-width: 420px;
   border: solid;
@@ -5970,18 +5971,21 @@ body {
 .react-navbar-li {
   list-style-type: none;
   display: inline-block;
-  padding: 10px 20px;
+  padding: 10px;
+  margin: 1px;
   background-color: #f2f2f2;
   color: rgba(0, 0, 0, 0.7);
   font-weight: bold;
-  cursor: pointer; }
+  cursor: pointer;
+  transition: box-shadow .5s; }
 
 .react-navbar-li a {
   text-decoration: none;
   color: rgba(0, 0, 0, 0.7); }
 
-.react-navbar-li:hover, .active {
-  background-color: #e3e3e3; }
+.react-navbar-li:hover {
+  background-color: #e3e3e3;
+  box-shadow: 0 1px 7px #888888; }
 
 .event-table-container {
   margin: 20px 0 20px 0; }
@@ -6018,7 +6022,9 @@ body {
   line-height: 32px;
   text-align: center;
   display: inline-block;
-  border-radius: 50%; }
+  border-radius: 50%;
+  transition: background-color .3s;
+  transition: color .3; }
 
 .day-div:hover, .today-div:hover, .out-of-month-div:hover, .pre-selected-div:hover {
   background-color: #6495ed;
@@ -6102,7 +6108,8 @@ body {
   font-family: Consolas, sans-serif;
   font-size: 12px;
   text-align: center;
-  min-width: 236px; }
+  width: 236px;
+  display: inline-block; }
 
 .input-time {
   font-family: Helvetica, sans-serif;
@@ -6141,5 +6148,29 @@ body {
 .datepicker {
   display: table; }
 
-.create-button-container {
-  margin-bottom: 5px; }
+.cbtn-parent {
+  font-size: 28px;
+  border: none;
+  border-radius: 50%;
+  background-color: #d23f31;
+  color: #ffffff;
+  text-align: center;
+  width: 56px;
+  height: 56px;
+  left: 80%;
+  top: 80%;
+  position: fixed;
+  display: table;
+  box-shadow: 0 5px 5px #888888;
+  transition: box-shadow .5s; }
+
+.cbtn-child {
+  display: inline-block;
+  vertical-align: middle; }
+
+.cbtn-child a {
+  text-decoration: none; }
+
+.cbtn-parent:hover {
+  box-shadow: 0 5px 15px #888888;
+  cursor: pointer; }

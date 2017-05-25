@@ -101,6 +101,19 @@ var App = function App() {
   return _react2.default.createElement(
     "div",
     null,
+    _react2.default.createElement(
+      _reactRouterDom.Link,
+      { to: "/add" },
+      _react2.default.createElement(
+        "div",
+        { className: "cbtn-parent" },
+        _react2.default.createElement(
+          "div",
+          { className: "cbtn-child" },
+          "+"
+        )
+      )
+    ),
     _react2.default.createElement(Header, null),
     _react2.default.createElement(
       "div",

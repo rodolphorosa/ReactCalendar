@@ -48,7 +48,7 @@ body {
   background-color: #614789;
   text-align: center;
   padding: 10px;
-	width: 100;
+	min-width: 100;
 }
 
 .header a {
@@ -67,6 +67,10 @@ body {
   display: table;
 }
 
+.home {
+	// padding: 20px;
+}
+
 .calendar-menu {
   display: table;
   margin: 20px auto;
@@ -74,6 +78,7 @@ body {
 
 .calendar-menu-inner {
   margin: 2px auto;
+	display: block;
 }
 
 .no-event-container {
@@ -82,7 +87,7 @@ body {
 }
 
 .event-list-menu {
-  padding: 15px 30px 15px 30px;
+  padding: 15px;
   margin: 0 auto;
   min-width: 420px;
   border: solid;
@@ -121,11 +126,13 @@ body {
 .react-navbar-li {
   list-style-type: none;
   display: inline-block;
-  padding: 10px 20px;
+  padding: 10px;
+	margin: 1px;
   background-color: $react-navbar-li-background-color;
   color: $react-navbar-li-color;
   font-weight: bold;
   cursor: pointer;
+	transition: box-shadow .5s;
 }
 
 .react-navbar-li a {
@@ -133,8 +140,9 @@ body {
   color: $react-navbar-li-color;
 }
 
-.react-navbar-li:hover, .active {
+.react-navbar-li:hover {
   background-color: $on-hover-react-navbar-li-background-color;
+	box-shadow: 0 1px 7px #888888;
 }
 
 .event-table-container {
@@ -174,6 +182,8 @@ body {
 .day-div {
   @include day-div-style;
   border-radius: 50%;
+	transition: background-color .3s;
+	transition: color .3;
 }
 
 .day-div:hover {
@@ -266,7 +276,8 @@ body {
 .home-date-input {
   @include input-font-style;
   text-align: center;
-  min-width: $month-div-width + 10px;
+  width: $month-div-width + 10px;
+	display: inline-block;
 }
 
 .input-time {
@@ -315,5 +326,37 @@ body {
 }
 
 .create-button-container {
-  margin-bottom: 5px;
+
+}
+
+.cbtn-parent {
+	font-size: 28px;
+	border: none;
+	border-radius: 50%;
+	background-color: #d23f31;
+	color: #ffffff;
+	text-align: center;
+	width: 56px;
+	height: 56px;
+	left: 80%;
+	top: 80%;
+	position: fixed;
+	display: table;
+	box-shadow: 0 5px 5px #888888;
+	transition: box-shadow .5s;
+}
+
+.cbtn-child {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.cbtn-child a {
+	text-decoration: none;
+
+}
+
+.cbtn-parent:hover {
+	box-shadow: 0 5px 15px #888888;
+	cursor: pointer;
 }

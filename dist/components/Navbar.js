@@ -68,15 +68,6 @@ var Navbar = function (_Component) {
           { className: "react-navbar-ul" },
           _react2.default.createElement(
             "li",
-            { className: "react-navbar-li" },
-            _react2.default.createElement(
-              _reactRouterDom.Link,
-              { to: "/add" },
-              "Criar"
-            )
-          ),
-          _react2.default.createElement(
-            "li",
             { className: "react-navbar-li", onClick: this.requestToday },
             "Hoje"
           ),

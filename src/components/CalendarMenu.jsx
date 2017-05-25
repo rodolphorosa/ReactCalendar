@@ -48,7 +48,7 @@ class CalendarMenu extends Component {
             readOnly
             value={ dayInput }
             onClick={this.onClick} />
-        </div>
+        </div>        
         <div className={classes}>
           <Calendar preSelected={this.state.date} onSelect={this.props.onSelect} />
         </div>
