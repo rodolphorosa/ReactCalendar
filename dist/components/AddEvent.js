@@ -51,10 +51,9 @@ var AddEvent = function (_Component) {
         data: data
       }).then(function (response) {
         _this.props.history.push("/");
-        console.info("Event successfully saved!");
-      }).catch(function (response) {
-        console.error("Could not save event!");
+      }).catch(function (error) {
         _this.setState({ eventCreated: false });
+        console.error(error);
       });
     };
 

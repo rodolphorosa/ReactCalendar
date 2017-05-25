@@ -90,6 +90,11 @@ var Calendar = function (_Component) {
   }
 
   _createClass(Calendar, [{
+    key: "shouldComponentUpdate",
+    value: function shouldComponentUpdate(nextProps) {
+      return nextProps.preSelected !== this.props.preSelected;
+    }
+  }, {
     key: "componentWillReceiveProps",
     value: function componentWillReceiveProps(nextProps) {
       if (nextProps.preSelected !== this.props.preSelected) {

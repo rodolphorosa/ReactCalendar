@@ -99,13 +99,15 @@ var EventForm = function (_Component) {
     };
 
     _this.onSubmit = function (event) {
-      if ((0, _validation.isFormValid)(_this.state.title, _this.state.start, _this.state.end)) _this.props.handleSubmit({
-        title: _this.state.title,
-        local: _this.state.local,
-        description: _this.state.description,
-        start: _this.state.start,
-        end: _this.state.end
-      });
+      if ((0, _validation.isFormValid)(_this.state.title, _this.state.start, _this.state.end)) {
+        _this.props.handleSubmit({
+          title: _this.state.title,
+          local: _this.state.local,
+          description: _this.state.description,
+          start: _this.state.start,
+          end: _this.state.end
+        });
+      }
     };
 
     _this.state = _this.getInitialState();

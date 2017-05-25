@@ -22,6 +22,10 @@ class Calendar extends Component {
     }
   }
 
+  shouldComponentUpdate(nextProps) {
+    return nextProps.preSelected !== this.props.preSelected
+  }
+
   componentWillReceiveProps(nextProps) {
     if(nextProps.preSelected !== this.props.preSelected) {
       this.setState({ date: nextProps.preSelected })

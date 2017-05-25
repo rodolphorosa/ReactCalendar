@@ -87,8 +87,8 @@ class Home extends Component {
   renderNavbar() {
     return <Navbar
             date={this.state.date}
+            requestAll={this.requestAllEvents}
             requestToday={this.requestToday}
-            requestDate={this.requestEventsByDate}
             requestWeek={this.requestEventsByWeek}
             requestMonth={this.requestEventsByMonth} />
   }
@@ -135,7 +135,7 @@ class Home extends Component {
       eventMenu = this.renderNoEventContainer();
     }
 
-    return(      
+    return(
       <div className="home">
         { this.renderCalendarMenu() }
         { eventMenu }

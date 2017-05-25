@@ -22,10 +22,9 @@ class AddEvent extends Component {
       data: data
     }).then((response) => {
       this.props.history.push("/")
-      console.info("Event successfully saved!")
-    }).catch((response) => {
-      console.error("Could not save event!")
-      this.setState({ eventCreated: false })
+    }).catch((error) => {
+      this.setState({ eventCreated: false });
+      console.error(error);
     });
   }
 

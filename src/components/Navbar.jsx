@@ -9,14 +9,18 @@ class Navbar extends Component {
     }
   }
 
+  shouldComponentUpdate(nextProps) {
+    return nextProps.date !== this.props.date
+  }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.date !== this.props.date) {
       this.setState({ date: nextProps.date })
     }
   }
 
+  requestAll = () => this.props.requestAll();
   requestToday = () => this.props.requestToday();
-  requestDate = () => this.props.requestDate(this.state.date);
   requestWeek = () => this.props.requestWeek(this.state.date);
   requestMonth = () => this.props.requestMonth(this.state.date);
 
@@ -24,11 +28,11 @@ class Navbar extends Component {
     return(
       <nav className="react-navbar">
         <ul className="react-navbar-ul">
+          <li className="react-navbar-li" onClick={this.requestAll}>
+            Tudo
+          </li>
           <li className="react-navbar-li" onClick={this.requestToday}>
             Hoje
-          </li>
-          <li className="react-navbar-li" onClick={this.requestDate}>
-            Dia
           </li>
           <li className="react-navbar-li" onClick={this.requestWeek}>
             Semana

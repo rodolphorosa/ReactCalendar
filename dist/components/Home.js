@@ -130,8 +130,8 @@ var Home = function (_Component) {
     value: function renderNavbar() {
       return _react2.default.createElement(_Navbar2.default, {
         date: this.state.date,
+        requestAll: this.requestAllEvents,
         requestToday: this.requestToday,
-        requestDate: this.requestEventsByDate,
         requestWeek: this.requestEventsByWeek,
         requestMonth: this.requestEventsByMonth });
     }

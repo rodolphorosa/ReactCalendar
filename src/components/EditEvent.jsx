@@ -44,10 +44,9 @@ class EditEvent extends Component {
       data: data
     }).then((response) => {
       this.props.history.push(`/events/${this.props.match.params.id}`)
-      console.info("Event successfully updated")
-    }).catch((response) => {
-      console.error("An error occured")
-      this.setState({ eventUpdated: false })
+    }).catch((error) => {
+      this.setState({ eventUpdated: false });
+      console.error(error);
     })
   }
 

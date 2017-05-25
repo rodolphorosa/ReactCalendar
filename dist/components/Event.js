@@ -43,9 +43,8 @@ var Event = function (_Component) {
         method: "delete"
       }).then(function (response) {
         _this.props.history.push("/");
-        console.info("Event successfully deleted!");
       }).catch(function (error) {
-        console.error("Could not delete event!");
+        console.error(error);
       });
     };
 

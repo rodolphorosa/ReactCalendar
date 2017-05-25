@@ -27889,6 +27889,11 @@ var Calendar = function (_Component) {
   }
 
   _createClass(Calendar, [{
+    key: "shouldComponentUpdate",
+    value: function shouldComponentUpdate(nextProps) {
+      return nextProps.preSelected !== this.props.preSelected;
+    }
+  }, {
     key: "componentWillReceiveProps",
     value: function componentWillReceiveProps(nextProps) {
       if (nextProps.preSelected !== this.props.preSelected) {
@@ -28328,13 +28333,15 @@ var EventForm = function (_Component) {
     };
 
     _this.onSubmit = function (event) {
-      if ((0, _validation.isFormValid)(_this.state.title, _this.state.start, _this.state.end)) _this.props.handleSubmit({
-        title: _this.state.title,
-        local: _this.state.local,
-        description: _this.state.description,
-        start: _this.state.start,
-        end: _this.state.end
-      });
+      if ((0, _validation.isFormValid)(_this.state.title, _this.state.start, _this.state.end)) {
+        _this.props.handleSubmit({
+          title: _this.state.title,
+          local: _this.state.local,
+          description: _this.state.description,
+          start: _this.state.start,
+          end: _this.state.end
+        });
+      }
     };
 
     _this.state = _this.getInitialState();
@@ -46129,10 +46136,9 @@ var AddEvent = function (_Component) {
         data: data
       }).then(function (response) {
         _this.props.history.push("/");
-        console.info("Event successfully saved!");
-      }).catch(function (response) {
-        console.error("Could not save event!");
+      }).catch(function (error) {
         _this.setState({ eventCreated: false });
+        console.error(error);
       });
     };
 
@@ -46424,10 +46430,9 @@ var EditEvent = function (_Component) {
         data: data
       }).then(function (response) {
         _this.props.history.push("/events/" + _this.props.match.params.id);
-        console.info("Event successfully updated");
-      }).catch(function (response) {
-        console.error("An error occured");
+      }).catch(function (error) {
         _this.setState({ eventUpdated: false });
+        console.error(error);
       });
     };
 
@@ -46531,9 +46536,8 @@ var Event = function (_Component) {
         method: "delete"
       }).then(function (response) {
         _this.props.history.push("/");
-        console.info("Event successfully deleted!");
       }).catch(function (error) {
-        console.error("Could not delete event!");
+        console.error(error);
       });
     };
 
@@ -46804,8 +46808,8 @@ var Home = function (_Component) {
     value: function renderNavbar() {
       return _react2.default.createElement(_Navbar2.default, {
         date: this.state.date,
+        requestAll: this.requestAllEvents,
         requestToday: this.requestToday,
-        requestDate: this.requestEventsByDate,
         requestWeek: this.requestEventsByWeek,
         requestMonth: this.requestEventsByMonth });
     }
@@ -47275,12 +47279,12 @@ var Navbar = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, (Navbar.__proto__ || Object.getPrototypeOf(Navbar)).call(this, props));
 
-    _this.requestToday = function () {
-      return _this.props.requestToday();
+    _this.requestAll = function () {
+      return _this.props.requestAll();
     };
 
-    _this.requestDate = function () {
-      return _this.props.requestDate(_this.state.date);
+    _this.requestToday = function () {
+      return _this.props.requestToday();
     };
 
     _this.requestWeek = function () {
@@ -47298,6 +47302,11 @@ var Navbar = function (_Component) {
   }
 
   _createClass(Navbar, [{
+    key: "shouldComponentUpdate",
+    value: function shouldComponentUpdate(nextProps) {
+      return nextProps.date !== this.props.date;
+    }
+  }, {
     key: "componentWillReceiveProps",
     value: function componentWillReceiveProps(nextProps) {
       if (nextProps.date !== this.props.date) {
@@ -47315,13 +47324,13 @@ var Navbar = function (_Component) {
           { className: "react-navbar-ul" },
           _react2.default.createElement(
             "li",
-            { className: "react-navbar-li", onClick: this.requestToday },
-            "Hoje"
+            { className: "react-navbar-li", onClick: this.requestAll },
+            "Tudo"
           ),
           _react2.default.createElement(
             "li",
-            { className: "react-navbar-li", onClick: this.requestDate },
-            "Dia"
+            { className: "react-navbar-li", onClick: this.requestToday },
+            "Hoje"
           ),
           _react2.default.createElement(
             "li",

@@ -28,12 +28,12 @@ var Navbar = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, (Navbar.__proto__ || Object.getPrototypeOf(Navbar)).call(this, props));
 
-    _this.requestToday = function () {
-      return _this.props.requestToday();
+    _this.requestAll = function () {
+      return _this.props.requestAll();
     };
 
-    _this.requestDate = function () {
-      return _this.props.requestDate(_this.state.date);
+    _this.requestToday = function () {
+      return _this.props.requestToday();
     };
 
     _this.requestWeek = function () {
@@ -51,6 +51,11 @@ var Navbar = function (_Component) {
   }
 
   _createClass(Navbar, [{
+    key: "shouldComponentUpdate",
+    value: function shouldComponentUpdate(nextProps) {
+      return nextProps.date !== this.props.date;
+    }
+  }, {
     key: "componentWillReceiveProps",
     value: function componentWillReceiveProps(nextProps) {
       if (nextProps.date !== this.props.date) {
@@ -68,13 +73,13 @@ var Navbar = function (_Component) {
           { className: "react-navbar-ul" },
           _react2.default.createElement(
             "li",
-            { className: "react-navbar-li", onClick: this.requestToday },
-            "Hoje"
+            { className: "react-navbar-li", onClick: this.requestAll },
+            "Tudo"
           ),
           _react2.default.createElement(
             "li",
-            { className: "react-navbar-li", onClick: this.requestDate },
-            "Dia"
+            { className: "react-navbar-li", onClick: this.requestToday },
+            "Hoje"
           ),
           _react2.default.createElement(
             "li",

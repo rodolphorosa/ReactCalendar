@@ -98,7 +98,7 @@ class EventForm extends Component {
   }
 
   onSubmit = (event) => {
-    if (isFormValid(this.state.title, this.state.start, this.state.end))
+    if (isFormValid(this.state.title, this.state.start, this.state.end)) {
       this.props.handleSubmit({
         title: this.state.title,
         local: this.state.local,
@@ -106,6 +106,7 @@ class EventForm extends Component {
         start: this.state.start,
         end: this.state.end
       })
+    }
   }
 
   render() {

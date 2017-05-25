@@ -26,9 +26,8 @@ class Event extends Component {
       method: "delete"
     }).then((response) => {
       this.props.history.push("/");
-      console.info("Event successfully deleted!");
     }).catch((error) => {
-      console.error("Could not delete event!")
+      console.error(error)
     })
   }
 

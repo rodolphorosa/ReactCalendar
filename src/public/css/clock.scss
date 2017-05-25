@@ -27,7 +27,7 @@
   left: 48.75%;
   position: absolute;
   transform-origin: 50% 100%;
-  animation: tick 43200s infinite linear;
+  // animation: tick 43200s infinite linear;
   // transform: rotateZ(45deg);
   z-index: 1;
 }
@@ -40,8 +40,8 @@
   left: 49%;
   position: absolute;
   transform-origin: 50% 100%;
-  animation: tick 3600s infinite linear;
-  // transform: rotateZ(60deg);
+  // animation: tick 3600s infinite linear;
+  transform: rotateZ(120deg);
   z-index: 2;
 }
 
@@ -54,6 +54,7 @@
   position: absolute;
   transform-origin: 50% 100%;
   animation: tick 60s infinite linear;
+  // transform: rotateZ(240deg);
   z-index: 3;
 }
 
