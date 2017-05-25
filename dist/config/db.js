@@ -12,7 +12,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 // const uri = process.env.MONGO_URI || "mongodb://localhost/reactCalendarDB";
 
-var uri = "mongodb://localhost/reactCalendarDB";
+var uri = "mongodb://rodolpho:r0d0lph0@ds151141.mlab.com:51141/reactcalendardb";
 
 /* Conecta a base de dados. */
 /* Configuracao da base de dados. */
