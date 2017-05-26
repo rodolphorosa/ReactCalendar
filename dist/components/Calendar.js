@@ -90,12 +90,13 @@ var Calendar = function (_Component) {
   }
 
   _createClass(Calendar, [{
-    key: "shouldComponentUpdate",
-    value: function shouldComponentUpdate(nextProps) {
-      return nextProps.preSelected !== this.props.preSelected;
-    }
-  }, {
     key: "componentWillReceiveProps",
+
+
+    // shouldComponentUpdate(nextProps) {
+    //   return nextProps.preSelected !== this.props.preSelected
+    // }
+
     value: function componentWillReceiveProps(nextProps) {
       if (nextProps.preSelected !== this.props.preSelected) {
         this.setState({ date: nextProps.preSelected });
